@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assessment Survey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+        h2 {
+            margin: 20px 0 10px;
+        }
+        p {
+            margin: 10px 0;
+        }
+        table {
+            margin: 0 auto;
+            font-size: smaller;
+        }
+        td {
+            padding: 10px;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        button {
+         margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin: 20px auto;
+            padding: 20px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        </style>
+    <script>
+        function evaluateSurvey() {
+            const results = {
+                visionValueCulture: false,
+                relationshipConnections: false,
+                practices: false,
+                middleManagement: false,
+                trainingDevelopment: false,
+                employeeWellBeing: false,
+                innovation: false,
+                leadershipDevelopment: false,
+                performanceManagement: false,
+                diversityInclusion: false
+            };
+            results.visionValueCulture = document.querySelector('input[name="visionValueCulture"]:checked').value === "no";
+            results.relationshipConnections = document.querySelector('input[name="relationshipConnections"]:checked').value === "no";
+            results.practices = document.querySelector('input[name="practices"]:checked').value === "no";
+            results.middleManagement = document.querySelector('input[name="middleManagement"]:checked').value === "no";
+            results.trainingDevelopment = document.querySelector('input[name="trainingDevelopment"]:checked').value === "no";
+            results.employeeWellBeing = document.querySelector('input[name="employeeWellBeing"]:checked').value === "no";
+            results.innovation = document.querySelector('input[name="innovation"]:checked').value === "no";
+            results.leadershipDevelopment = document.querySelector('input[name="leadershipDevelopment"]:checked').value === "no";
+            results.performanceManagement = document.querySelector('input[name="performanceManagement"]:checked').value === "no";
+            results.diversityInclusion = document.querySelector('input[name="diversityInclusion"]:checked').value === "no";
+            let solution = "<h3>Recommended Solutions:</h3><ul>";
+            if (results.visionValueCulture) solution += "<li>Value-house workshop and BSM training</li>";
+            if (results.relationshipConnections) solution += "<li>6 months on-the-job training</li>";
+            if (results.practices) solution += "<li>Value-driven SOP workshop and 6 months on-the-job training</li>";
+            if (results.middleManagement) solution += "<li>TTT training and feedback loop environment</li>";
+            if (results.trainingDevelopment) solution += "<li>Customized training programs</li>";
+            if (results.employeeWellBeing) solution += "<li>Wellness programs and stress management workshops</li>";
+            if (results.innovation) solution += "<li>Innovation workshops and creative problem-solving sessions</li>";
+            if (results.leadershipDevelopment) solution += "<li>Leadership training programs</li>";
+            if (results.performanceManagement) solution += "<li>Performance management training</li>";
+            if (results.diversityInclusion) solution += "<li>Diversity and inclusion training</li>";
+            solution += "</ul>";
+            document.getElementById('result').innerHTML = solution;
+        }
+    </script>
+</head>
+<body>
+    <h1>Assessment Survey</h1>
+    <form id="surveyForm">
+        <table>
+            <tr>
+                <td>
+                    <h2>Vision, Value, and Culture</h2>
+                    <p>Do you feel clear about the unit's vision, mission, and values?</p>
+                    <label><input type="radio" name="visionValueCulture" value="yes">Yes</label>
+                    <label><input type="radio" name="visionValueCulture" value="no">No</label>
+                    <h2>Relationship and Connections</h2>
+                    <p>How would you rate the level of teamwork and collaboration within your team?</p>
+                    <label><input type="radio" name="relationshipConnections" value="yes">Good</label>
+                    <label><input type="radio" name="relationshipConnections" value="no">Needs Improvement</label>
+                    <h2>Practices</h2>
+                    <p>Are there standardized procedures for tasks within your team?</p>
+                    <label><input type="radio" name="practices" value="yes">Yes</label>
+                    <label><input type="radio" name="practices" value="no">No</label>
+                    <h2>Middle Management</h2>
+                    <p>Do you think middle management supports and guides employees effectively?</p>
+                    <label><input type="radio" name="middleManagement" value="yes">Yes</label>
+                    <label><input type="radio" name="middleManagement" value="no">No</label>
+                    <h2>Training and Development</h2>
+                    <p>Do you find the training programs offered useful for your role?</p>
+                    <label><input type="radio" name="trainingDevelopment" value="yes">Yes</label>
+                    <label><input type="radio" name="trainingDevelopment" value="no">No</label>
+                </td>
+                <td width=20px></td>
+                <td>
+                    <h2>Employee Well-being</h2>
+                    <p>Do you feel the organization supports your well-being and helps manage stress?</p>
+                    <label><input type="radio" name="employeeWellBeing" value="yes">Yes</label>
+                    <label><input type="radio" name="employeeWellBeing" value="no">No</label>
+                    <h2>Innovation</h2>
+                    <p>Are you encouraged to suggest and try new ideas or methods at work?</p>
+                    <label><input type="radio" name="innovation" value="yes">Yes</label>
+                    <label><input type="radio" name="innovation" value="no">No</label>
+                    <h2>Leadership Development</h2>
+                    <p>Do you feel there are enough opportunities for leadership development?</p>
+                    <label><input type="radio" name="leadershipDevelopment" value="yes">Yes</label>
+                    <label><input type="radio" name="leadershipDevelopment" value="no">No</label>
+                    <h2>Performance Management</h2>
+                    <p>Are you satisfied with the current performance appraisal process?</p>
+                    <label><input type="radio" name="performanceManagement" value="yes">Yes</label>
+                    <label><input type="radio" name="performanceManagement" value="no">No</label>
+                    <h2>Diversity and Inclusion</h2>
+                    <p>Do you feel the organization promotes diversity and inclusion effectively?</p>
+                    <label><input type="radio" name="diversityInclusion" value="yes">Yes</label>
+                    <label><input type="radio" name="diversityInclusion" value="no">No</label>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" onclick="evaluateSurvey()">Submit</button>
+                    
+                </td>
+                <td colspan="2">Recommended Services:<br>
+                <div id="result"></div></td>
+            </tr>
+        </table>
+       
+    </form>
+    </body>
+   
+</body>
+</html>
