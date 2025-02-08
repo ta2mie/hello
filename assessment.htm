@@ -71,19 +71,15 @@
             results.employeeWellBeing = document.querySelector('input[name="employeeWellBeing"]:checked').value === "no";
             results.innovation = document.querySelector('input[name="innovation"]:checked').value === "no";
             results.leadershipDevelopment = document.querySelector('input[name="leadershipDevelopment"]:checked').value === "no";
-            results.performanceManagement = document.querySelector('input[name="performanceManagement"]:checked').value === "no";
-            results.diversityInclusion = document.querySelector('input[name="diversityInclusion"]:checked').value === "no";
             let solution = "<h3>Recommended Solutions:</h3><ul>";
             if (results.visionValueCulture) solution += "<li>Value-house workshop and BSM training</li>";
             if (results.relationshipConnections) solution += "<li>6 months on-the-job training</li>";
             if (results.practices) solution += "<li>Value-driven SOP workshop and 6 months on-the-job training</li>";
-            if (results.middleManagement) solution += "<li>TTT training and feedback loop environment</li>";
+            if (results.middleManagement) solution += "<li>TTT training</li>";
             if (results.trainingDevelopment) solution += "<li>Customized training programs</li>";
-            if (results.employeeWellBeing) solution += "<li>Wellness programs and stress management workshops</li>";
+            if (results.employeeWellBeing) solution += "<li>BSM training</li>";
             if (results.innovation) solution += "<li>Innovation workshops and creative problem-solving sessions</li>";
-            if (results.leadershipDevelopment) solution += "<li>Leadership training programs</li>";
-            if (results.performanceManagement) solution += "<li>Performance management training</li>";
-            if (results.diversityInclusion) solution += "<li>Diversity and inclusion training</li>";
+            if (results.leadershipDevelopment) solution += "<li>Value-house workshop and BSM, TTT trainings</li>";
             solution += "</ul>";
             document.getElementById('result').innerHTML = solution;
         }
@@ -130,15 +126,6 @@
                     <p>Do you believe that your leadership consistently acts in alignment with advancing the organization's mission??</p>
                     <label><input type="radio" name="leadershipDevelopment" value="yes">Yes</label>
                     <label><input type="radio" name="leadershipDevelopment" value="no">No</label>
-                    <h2>Performance Management</h2>
-                    <p>Are you satisfied with the current performance appraisal process?</p>
-                    <label><input type="radio" name="performanceManagement" value="yes">Yes</label>
-                    <label><input type="radio" name="performanceManagement" value="no">No</label>
-                    <h2>Diversity and Inclusion</h2>
-                    <p>Do you feel the organization promotes diversity and inclusion effectively?</p>
-                    <label><input type="radio" name="diversityInclusion" value="yes">Yes</label>
-                    <label><input type="radio" name="diversityInclusion" value="no">No</label>
-                    
                 </td>
             </tr>
             <tr>
