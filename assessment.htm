@@ -209,19 +209,6 @@
             if (!response1.ok) {
                 alert('Failed to submit the survey results to the first webhook.');
             }
-
-            // Send the results and solution to the second webhook
-            const response2 = await fetch('https://hooks.slack.com/triggers/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', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ results, solution })
-            });
-
-            if (!response2.ok) {
-                alert('Failed to submit the survey results to the second webhook.');
-            }
         }
     </script>
 </head>
