@@ -10,9 +10,31 @@
             background-color: #f4f4f4;
             color: #333;
             padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .highlight {
+            background-color: #ADD8E6; /* Light blue color */
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
         }
         .question {
             margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .question:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+        .question:nth-child(even) {
+            background-color: #e9e9e9;
         }
         .options {
             margin-left: 20px;
@@ -31,128 +53,150 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 0 auto;
         }
         button:hover {
             background-color: #0056b3;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            .highlight {
+                font-size: 14px;
+            }
+            button {
+                width: 100%;
+                padding: 12px;
+            }
         }
     </style>
 </head>
 <body>
 
 <h1>DISC 人格測試</h1>
-DISC 人格測試是一種簡單的人格測試，用以分析個人的行為特徵，幫助人們更好地了解自己和他人。
-請根據以下問題，選擇最符合自己的答案，然後點擊提交按鈕，查看測試結果。
-把結果記下來，之後在 BMS tasting workshop用到。 Source: https://www.etnet.com.hk/www/tc/lifestyle/officetips/workgossip/56637
+<div class="highlight">
+    DISC 人格測試是一種簡單的人格測試，用以分析個人的行為特徵，幫助人們更好地了解自己和他人。
+    請根據以下問題，選擇最符合自己的答案，然後點擊提交按鈕，查看測試結果。
+</div>
+
 <form id="personalityTest">
     <div class="question">
         <p>1. 你在同事眼中是怎樣的？</p>
         <div class="options">
-            <label><input type="radio" name="q1" value="A"> A）積極、熱情、有行動力的人</label><br>
-            <label><input type="radio" name="q1" value="B"> B）活潑、開朗、風趣幽默的人</label><br>
-            <label><input type="radio" name="q1" value="C"> C）忠誠、隨和、容易相處的人</label><br>
-            <label><input type="radio" name="q1" value="D"> D）謹慎、冷靜、注意細節的人</label>
+            <label><input type="radio" name="q1" value="甲"> 甲）積極、熱情、有行動力的人</label><br>
+            <label><input type="radio" name="q1" value="乙"> 乙）活潑、開朗、風趣幽默的人</label><br>
+            <label><input type="radio" name="q1" value="丙"> 丙）忠誠、隨和、容易相處的人</label><br>
+            <label><input type="radio" name="q1" value="丁"> 丁）謹慎、冷靜、注意細節的人</label>
         </div>
     </div>
 
     <div class="question">
         <p>2. 你喜歡看哪一類型的雜誌？</p>
         <div class="options">
-            <label><input type="radio" name="q2" value="A"> A）管理、財經、趨勢類</label><br>
-            <label><input type="radio" name="q2" value="B"> B）旅遊、美食、時尚類</label><br>
-            <label><input type="radio" name="q2" value="C"> C）心靈、散文、家庭類</label><br>
-            <label><input type="radio" name="q2" value="D"> D）科技、專業、藝術類</label>
+            <label><input type="radio" name="q2" value="甲"> 甲）管理、財經、趨勢類</label><br>
+            <label><input type="radio" name="q2" value="乙"> 乙）旅遊、美食、時尚類</label><br>
+            <label><input type="radio" name="q2" value="丙"> 丙）心靈、散文、家庭類</label><br>
+            <label><input type="radio" name="q2" value="丁"> 丁）科技、專業、藝術類</label>
         </div>
     </div>
 
     <div class="question">
         <p>3. 你做決策的方式？</p>
         <div class="options">
-            <label><input type="radio" name="q3" value="A"> A）希望能立即有效</label><br>
-            <label><input type="radio" name="q3" value="B"> B）感覺重於一切</label><br>
-            <label><input type="radio" name="q3" value="C"> C）有時間考慮或尋求他人意見</label><br>
-            <label><input type="radio" name="q3" value="D"> D）要有詳細的資料評估</label>
+            <label><input type="radio" name="q3" value="甲"> 甲）希望能立即有效</label><br>
+            <label><input type="radio" name="q3" value="乙"> 乙）感覺重於一切</label><br>
+            <label><input type="radio" name="q3" value="丙"> 丙）有時間考慮或尋求他人意見</label><br>
+            <label><input type="radio" name="q3" value="丁"> 丁）要有詳細的資料評估</label>
         </div>
     </div>
 
     <div class="question">
         <p>4. 你最擅長哪種工作？</p>
         <div class="options">
-            <label><input type="radio" name="q4" value="A"> A）以目標為導向，有不服輸的精神</label><br>
-            <label><input type="radio" name="q4" value="B"> B）良好的口才，能主動的與人建立友善關係</label><br>
-            <label><input type="radio" name="q4" value="C"> C）能配合團隊，扮演忠誠的擁護者</label><br>
-            <label><input type="radio" name="q4" value="D"> D）流程的掌握，注意到細節</label>
+            <label><input type="radio" name="q4" value="甲"> 甲）以目標為導向，有不服輸的精神</label><br>
+            <label><input type="radio" name="q4" value="乙"> 乙）良好的口才，能主動的與人建立友善關係</label><br>
+            <label><input type="radio" name="q4" value="丙"> 丙）能配合團隊，扮演忠誠的擁護者</label><br>
+            <label><input type="radio" name="q4" value="丁"> 丁）流程的掌握，注意到細節</label>
         </div>
     </div>
 
     <div class="question">
         <p>5. 當面對壓力時，你會？</p>
         <div class="options">
-            <label><input type="radio" name="q5" value="A"> A）用行動力去面對它，並且克服它</label><br>
-            <label><input type="radio" name="q5" value="B"> B）希望找人傾吐，獲得認同</label><br>
-            <label><input type="radio" name="q5" value="C"> C）逆來順受，儘量避免衝突</label><br>
-            <label><input type="radio" name="q5" value="D"> D）重新思考緣由，必要時做精細的解說</label>
+            <label><input type="radio" name="q5" value="甲"> 甲）用行動力去面對它，並且克服它</label><br>
+            <label><input type="radio" name="q5" value="乙"> 乙）希望找人傾吐，獲得認同</label><br>
+            <label><input type="radio" name="q5" value="丙"> 丙）逆來順受，儘量避免衝突</label><br>
+            <label><input type="radio" name="q5" value="丁"> 丁）重新思考緣由，必要時做精細的解說</label>
         </div>
     </div>
 
     <div class="question">
         <p>6. 與同事之間的相處？</p>
         <div class="options">
-            <label><input type="radio" name="q6" value="A"> A）以公事為主，很少談到個人生活</label><br>
-            <label><input type="radio" name="q6" value="B"> B）重視氣氛，能夠帶動團隊情趣</label><br>
-            <label><input type="radio" name="q6" value="C"> C）良好的傾聽者，對人態度溫和友善</label><br>
-            <label><input type="radio" name="q6" value="D"> D）被動，不會主動與人建立關係</label>
+            <label><input type="radio" name="q6" value="甲"> 甲）以公事為主，很少談到個人生活</label><br>
+            <label><input type="radio" name="q6" value="乙"> 乙）重視氣氛，能夠帶動團隊情趣</label><br>
+            <label><input type="radio" name="q6" value="丙"> 丙）良好的傾聽者，對人態度溫和友善</label><br>
+            <label><input type="radio" name="q6" value="丁"> 丁）被動，不會主動與人建立關係</label>
         </div>
     </div>
 
     <div class="question">
         <p>7. 你希望別人如何與你溝通？</p>
         <div class="options">
-            <label><input type="radio" name="q7" value="A"> A）直接講重點，不要拐彎抹角</label><br>
-            <label><input type="radio" name="q7" value="B"> B）輕鬆，不要太嚴肅</label><br>
-            <label><input type="radio" name="q7" value="C"> C）不要一次說太多，要給予明確的支持</label><br>
-            <label><input type="radio" name="q7" value="D"> D）凡是說清楚，講明白</label>
+            <label><input type="radio" name="q7" value="甲"> 甲）直接講重點，不要拐彎抹角</label><br>
+            <label><input type="radio" name="q7" value="乙"> 乙）輕鬆，不要太嚴肅</label><br>
+            <label><input type="radio" name="q7" value="丙"> 丙）不要一次說太多，要給予明確的支持</label><br>
+            <label><input type="radio" name="q7" value="丁"> 丁）凡是說清楚，講明白</label>
         </div>
     </div>
 
     <div class="question">
         <p>8. 要完成一件事情時，你最在意的部分是？</p>
         <div class="options">
-            <label><input type="radio" name="q8" value="A"> A）效果是否有達到</label><br>
-            <label><input type="radio" name="q8" value="B"> B）過程是否快樂</label><br>
-            <label><input type="radio" name="q8" value="C"> C）前後是否有改變</label><br>
-            <label><input type="radio" name="q8" value="D"> D）流程是否正確</label>
+            <label><input type="radio" name="q8" value="甲"> 甲）效果是否有達到</label><br>
+            <label><input type="radio" name="q8" value="乙"> 乙）過程是否快樂</label><br>
+            <label><input type="radio" name="q8" value="丙"> 丙）前後是否有改變</label><br>
+            <label><input type="radio" name="q8" value="丁"> 丁）流程是否正確</label>
         </div>
     </div>
 
     <div class="question">
         <p>9. 甚麼事情會讓你恐懼？</p>
         <div class="options">
-            <label><input type="radio" name="q9" value="A"> A）呈現弱點，被人利用</label><br>
-            <label><input type="radio" name="q9" value="B"> B）失去認同，被人排擠</label><br>
-            <label><input type="radio" name="q9" value="C"> C）過度變動，讓人無所適從</label><br>
-            <label><input type="radio" name="q9" value="D"> D）制度不清，標準不一</label>
+            <label><input type="radio" name="q9" value="甲"> 甲）呈現弱點，被人利用</label><br>
+            <label><input type="radio" name="q9" value="乙"> 乙）失去認同，被人排擠</label><br>
+            <label><input type="radio" name="q9" value="丙"> 丙）過度變動，讓人無所適從</label><br>
+            <label><input type="radio" name="q9" value="丁"> 丁）制度不清，標準不一</label>
         </div>
     </div>
 
     <div class="question">
         <p>10. 你自覺有甚麼缺點？</p>
         <div class="options">
-            <label><input type="radio" name="q10" value="A"> A）沒有耐心</label><br>
-            <label><input type="radio" name="q10" value="B"> B）欠缺細心</label><br>
-            <label><input type="radio" name="q10" value="C"> C）沒有主見</label><br>
-            <label><input type="radio" name="q10" value="D"> D）欠缺風趣</label>
+            <label><input type="radio" name="q10" value="甲"> 甲）沒有耐心</label><br>
+            <label><input type="radio" name="q10" value="乙"> 乙）欠缺細心</label><br>
+            <label><input type="radio" name="q10" value="丙"> 丙）沒有主見</label><br>
+            <label><input type="radio" name="q10" value="丁"> 丁）欠缺風趣</label>
         </div>
     </div>
 
     <button type="button" onclick="calculateResults()">提交</button>
+    <p>按"提交"後，結果會在下面顯示，請你記下來，之後在 workshop 一起討論。</p>
 </form>
 
-<div class="result" id="result" style="display: none;">
+<div class="result" id="result">
     <h2>測試結果</h2>
-    <p>A 選項的數量: <span id="aCount">0</span></p>
-    <p>B 選項的數量: <span id="bCount">0</span></p>
-    <p>C 選項的數量: <span id="cCount">0</span></p>
-    <p>D 選項的數量: <span id="dCount">0</span></p>
+    <p>甲 選項的數量: <span id="aCount">0</span></p>
+    <p>乙 選項的數量: <span id="bCount">0</span></p>
+    <p>丙 選項的數量: <span id="cCount">0</span></p>
+    <p>丁 選項的數量: <span id="dCount">0</span></p>
+    <p>此測驗是簡單體驗版， 要深入測試，可在網上搜。此測驗的來源是：https://www.etnet.com.hk/www/tc/lifestyle/officetips/workgossip/56637</p>
 </div>
 
 <script>
@@ -163,16 +207,16 @@ DISC 人格測試是一種簡單的人格測試，用以分析個人的行為特
             const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
             if (selectedOption) {
                 switch (selectedOption.value) {
-                    case 'A':
+                    case '甲':
                         aCount++;
                         break;
-                    case 'B':
+                    case '乙':
                         bCount++;
                         break;
-                    case 'C':
+                    case '丙':
                         cCount++;
                         break;
-                    case 'D':
+                    case '丁':
                         dCount++;
                         break;
                 }
@@ -184,7 +228,7 @@ DISC 人格測試是一種簡單的人格測試，用以分析個人的行為特
         document.getElementById('cCount').textContent = cCount;
         document.getElementById('dCount').textContent = dCount;
 
-        document.getElementById('result').style.display = 'block';
+        document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
     }
 </script>
 
