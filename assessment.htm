@@ -112,84 +112,69 @@
             }
             #result {
                 margin-top: 10px;
-                width: 100%;
+                width: 80%;
             }
         }
     </style>
     <script>
         async function evaluateSurvey() {
             const questions = [
-                'visionValueCulture',
-                'relationshipConnections',
-                'practices',
-                'middleManagement',
-                'trainingDevelopment',
-                'employeeWellBeing',
-                'innovation',
-                'leadershipDevelopment'
+                'visionValues',
+                'empathy',
+                'communication',
+                'feedback',
+                'elderCareSOP',
+                'trainingSupport',
+                'empowerment',
+                'supportGuidance'
             ];
 
             for (let question of questions) {
                 if (!document.querySelector(`input[name="${question}"]:checked`)) {
-                    alert('Please answer all questions before submitting the survey.');
+                    alert('請回答所有問題後再提交問卷。');
                     return;
                 }
             }
 
             const results = {
-                visionValueCulture: false,
-                relationshipConnections: false,
-                practices: false,
-                middleManagement: false,
-                trainingDevelopment: false,
-                employeeWellBeing: false,
-                innovation: false,
-                leadershipDevelopment: false
+                visionValues: false,
+                empathy: false,
+                communication: false,
+                feedback: false,
+                elderCareSOP: false,
+                trainingSupport: false,
+                empowerment: false,
+                supportGuidance: false
             };
-            results.visionValueCulture = document.querySelector('input[name="visionValueCulture"]:checked').value === "no";
-            results.relationshipConnections = document.querySelector('input[name="relationshipConnections"]:checked').value === "no";
-            results.practices = document.querySelector('input[name="practices"]:checked').value === "no";
-            results.middleManagement = document.querySelector('input[name="middleManagement"]:checked').value === "no";
-            results.trainingDevelopment = document.querySelector('input[name="trainingDevelopment"]:checked').value === "no";
-            results.employeeWellBeing = document.querySelector('input[name="employeeWellBeing"]:checked').value === "no";
-            results.innovation = document.querySelector('input[name="innovation"]:checked').value === "no";
-            results.leadershipDevelopment = document.querySelector('input[name="leadershipDevelopment"]:checked').value === "no";
+
+            results.visionValues = document.querySelector('input[name="visionValues"]:checked').value === "needsImprovement";
+            results.empathy = document.querySelector('input[name="empathy"]:checked').value === "needsImprovement";
+            results.communication = document.querySelector('input[name="communication"]:checked').value === "needsImprovement";
+            results.feedback = document.querySelector('input[name="feedback"]:checked').value === "needsImprovement";
+            results.elderCareSOP = document.querySelector('input[name="elderCareSOP"]:checked').value === "needsImprovement";
+            results.trainingSupport = document.querySelector('input[name="trainingSupport"]:checked').value === "needsImprovement";
+            results.empowerment = document.querySelector('input[name="empowerment"]:checked').value === "needsImprovement";
+            results.supportGuidance = document.querySelector('input[name="supportGuidance"]:checked').value === "needsImprovement";
 
             let solutionSet = new Set();
-            if (results.visionValueCulture) {
-                solutionSet.add("1.0 Value-house workshop.");
-                solutionSet.add("2.0 BSM training.");
+            if (results.visionValues) {
+                solutionSet.add("建立信任與持續改進的文化（共建價值屋）");
             }
-            if (results.relationshipConnections) {
-                solutionSet.add("2.0 BSM training.");
+            if (results.empathy) {
+                solutionSet.add("對同事與長者展現一致的理解和行為（以價值為本SOP）");
             }
-            if (results.practices) {
-                solutionSet.add("1.1 Value-driven SOP workshop.");
-                solutionSet.add("3.0 Six months of on-the-job training and coaching.");
+            if (results.communication || results.supportGuidance || results.trainingSupport) {
+                solutionSet.add("建立信任與持續改進的文化（BSM，反思、三文治反饋機制）");
             }
-            if (results.middleManagement) {
-                solutionSet.add("2.1 TTT training.");
+            if (results.elderCareSOP) {
+                solutionSet.add("對同事與長者展現一致的理解和行為（以價值為本SOP）");
             }
-            if (results.trainingDevelopment) {
-                solutionSet.add("1.1 Value-driven SOP workshop.");
-                solutionSet.add("2.0 BSM training.");
-            }
-            if (results.employeeWellBeing) {
-                solutionSet.add("2.0 BSM training.");
-                solutionSet.add("2.1 TTT training.");
-            }
-            if (results.innovation) {
-                solutionSet.add("1.0 Value-house workshop.");
-                solutionSet.add("3.0 Six months of on-the-job training and coaching.");
-            }
-            if (results.leadershipDevelopment) {
-                solutionSet.add("1.0 Value-house workshop.");
-                solutionSet.add("2.0 BSM training.");
-                solutionSet.add("2.1 TTT training.");
+            if (results.empowerment || results.feedback) {
+                solutionSet.add("實現變革系統的初期可持續性，幫助組織站穩陣腳（計劃不包括績效管理系統）");
             }
 
             let solutionArray = Array.from(solutionSet).sort();
-            let solution = "<h3>Recommended Solutions:</h3><ul>";
+            let solution = "<h3>推薦解決方案：</h3><ul>";
             solutionArray.forEach(item => {
                 solution += `<li>${item}</li>`;
             });
@@ -207,72 +192,72 @@
             });
 
             if (!response1.ok) {
-                alert('Failed to submit the survey results to the first webhook.');
+                alert('提交問卷結果到第一個 Webhook 失敗。');
             }
         }
     </script>
 </head>
 <body>
     <div class="container">
-        <h1>Assessment Survey</h1>
+        <h1>評估問卷</h1>
         <form id="surveyForm">
             <div class="questions-container">
                 <div class="questions-column">
                     <div class="question">
-                        <h2>Vision, Value, and Culture</h2>
-                        <p>Do employees understand the organization's vision, mission, and values?</p>
-                        <label><input type="radio" name="visionValueCulture" value="yes">Yes</label>
-                        <label><input type="radio" name="visionValueCulture" value="no">No</label>
+                        <h2>願景與價值觀</h2>
+                        <p>單位是否有清晰的願景與價值觀，員工能清晰理解？</p>
+                        <label><input type="radio" name="visionValues" value="yes">是</label>
+                        <label><input type="radio" name="visionValues" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
-                        <h2>Relationship and Connections</h2>
-                        <p>How is the quality of teamwork and collaboration?</p>
-                        <label><input type="radio" name="relationshipConnections" value="yes">Good</label>
-                        <label><input type="radio" name="relationshipConnections" value="no">Needs Improvement</label>
+                        <h2>心智模式</h2>
+                        <p>員工是否具備同理心與尊重，單位文化是否包容？</p>
+                        <label><input type="radio" name="empathy" value="yes">是</label>
+                        <label><input type="radio" name="empathy" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
-                        <h2>Practices</h2>
-                        <p>Are there standardized procedures for consistent, high-quality service?</p>
-                        <label><input type="radio" name="practices" value="yes">Yes</label>
-                        <label><input type="radio" name="practices" value="no">No</label>
+                        <h2>關係與連結</h2>
+                        <p>單位內部是否有有效的溝通機制，信息傳遞是否透明且及時？</p>
+                        <label><input type="radio" name="communication" value="yes">是</label>
+                        <label><input type="radio" name="communication" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
-                        <h2>Middle Management</h2>
-                        <p>Does your middle management effectively support and guide employees?</p>
-                        <label><input type="radio" name="middleManagement" value="yes">Yes</label>
-                        <label><input type="radio" name="middleManagement" value="no">No</label>
+                        <h2>反饋與改進</h2>
+                        <p>單位是否有有效的反饋機制，並能根據反饋持續改進改變策略？</p>
+                        <label><input type="radio" name="feedback" value="yes">是</label>
+                        <label><input type="radio" name="feedback" value="needsImprovement">需要改善</label>
                     </div>
                 </div>
                 <div class="questions-column">
                     <div class="question">
-                        <h2>Training and Development</h2>
-                        <p>Is the current training program enhancing employee performance and behavior as expected?</p>
-                        <label><input type="radio" name="trainingDevelopment" value="yes">Yes</label>
-                        <label><input type="radio" name="trainingDevelopment" value="no">No</label>
+                        <h2>實踐</h2>
+                        <p>單位是否有長者為本的服務模式或SOP，並能有效推動改變？</p>
+                        <label><input type="radio" name="elderCareSOP" value="yes">是</label>
+                        <label><input type="radio" name="elderCareSOP" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
-                        <h2>Employee Well-being</h2>
-                        <p>How well does your organization support well-being and foster a compassionate culture?</p>
-                        <label><input type="radio" name="employeeWellBeing" value="yes">Good</label>
-                        <label><input type="radio" name="employeeWellBeing" value="no">Needs Improvement</label>
+                        <h2>培訓與發展支持</h2>
+                        <p>單位是否為員工提供了足夠的培訓與發展機會，支持改變所需的技能與行為？</p>
+                        <label><input type="radio" name="trainingSupport" value="yes">是</label>
+                        <label><input type="radio" name="trainingSupport" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
-                        <h2>Innovation</h2>
-                        <p>How well does your organization foster feedback culture for continuous improvement?</p>
-                        <label><input type="radio" name="innovation" value="yes">Good</label>
-                        <label><input type="radio" name="innovation" value="no">Needs Improvement</label>
+                        <h2>權力動態</h2>
+                        <p>員工是否有職權與責任，能有效推動改變？</p>
+                        <label><input type="radio" name="empowerment" value="yes">是</label>
+                        <label><input type="radio" name="empowerment" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
-                        <h2>Leadership Development</h2>
-                        <p>Does your leadership consistently drive the organization towards its mission and goals?</p>
-                        <label><input type="radio" name="leadershipDevelopment" value="yes">Yes</label>
-                        <label><input type="radio" name="leadershipDevelopment" value="no">No</label>
+                        <h2>支持與指導</h2>
+                        <p>中層管理是否有效支持與指導員工？</p>
+                        <label><input type="radio" name="supportGuidance" value="yes">是</label>
+                        <label><input type="radio" name="supportGuidance" value="needsImprovement">需要改善</label>
                     </div>
                 </div>
             </div>
             <div class="submit-container">
-                <button type="button" onclick="evaluateSurvey()">Submit</button>
-                <div id="result"><strong>Recommended Services:</strong></div>
+                <button type="button" onclick="evaluateSurvey()"><nobr>提交</nobr></button>
+                <div id="result"><strong>推薦解決方案：</strong></div>
             </div>
         </form>
     </div>
