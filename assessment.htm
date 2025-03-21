@@ -118,6 +118,11 @@
     </style>
     <script>
         async function evaluateSurvey() {
+            const submitButton = document.querySelector('button[type="button"]');
+            submitButton.style.backgroundColor = '#ccc'; // Gray out the button
+            submitButton.style.cursor = 'not-allowed';
+            submitButton.disabled = true; // Disable the button to prevent multiple clicks
+
             const questions = [
                 'visionValues',
                 'empathy',
@@ -132,6 +137,9 @@
             for (let question of questions) {
                 if (!document.querySelector(`input[name="${question}"]:checked`)) {
                     alert('請回答所有問題後再提交問卷。');
+                    submitButton.style.backgroundColor = '#FF9800'; // Reset button color
+                    submitButton.style.cursor = 'pointer';
+                    submitButton.disabled = false; // Re-enable the button
                     return;
                 }
             }
@@ -158,23 +166,23 @@
 
             let solutionSet = new Set();
             if (results.visionValues) {
-                solutionSet.add("建立信任與持續改進的文化（共建價值屋）");
+                solutionSet.add("信任與透明文化（價值屋）");
             }
             if (results.empathy) {
-                solutionSet.add("對同事與長者展現一致的理解和行為（以價值為本SOP）");
+                solutionSet.add("信任與透明文化（價值屋）");
             }
             if (results.communication || results.supportGuidance || results.trainingSupport) {
-                solutionSet.add("建立信任與持續改進的文化（BSM，反思、三文治反饋機制）");
+                solutionSet.add("反思與反饋文化（行為心態技巧、反饋機制）");
             }
             if (results.elderCareSOP) {
-                solutionSet.add("對同事與長者展現一致的理解和行為（以價值為本SOP）");
+                solutionSet.add("價值觀為核心同理文化（價值為本SOP）");
             }
             if (results.empowerment || results.feedback) {
-                solutionSet.add("實現變革系統的初期可持續性，幫助組織站穩陣腳（計劃不包括績效管理系統）");
+                solutionSet.add("反思與反饋文化（行為心態技巧、反饋機制）");
             }
 
             let solutionArray = Array.from(solutionSet).sort();
-            let solution = "<h3>推薦解決方案：</h3><ul>";
+            let solution = "<b>推薦解決方案：</b><ul>";
             solutionArray.forEach(item => {
                 solution += `<li>${item}</li>`;
             });
@@ -182,74 +190,84 @@
 
             document.getElementById('result').innerHTML = solution;
 
-            // Send the results and solution to the first webhook
-            const response1 = await fetch('https://hook.us2.make.com/ntyli7tkfld5yhw7zo67cow4q1jxxko2', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ results, solution })
-            });
+            // Add the new question and submission button
+            const followUpContainer = document.createElement('div');
+            followUpContainer.innerHTML = `
+                <div class="question">
+                    <h2>未來服務意向</h2>
+                    <p>您是否有興趣嘗試我們的服務？</p>
+                    <label><input type="radio" name="futureInterest" value="yes">是</label>
+                    <label><input type="radio" name="futureInterest" value="no">否</label>
+                </div>
+                <button type="button" onclick="submitFollowUp()">提交意向</button>
+            `;
+            document.getElementById('result').appendChild(followUpContainer);
+        }
 
-            if (!response1.ok) {
-                alert('提交問卷結果到第一個 Webhook 失敗。');
+        function submitFollowUp() {
+            const futureInterest = document.querySelector('input[name="futureInterest"]:checked');
+            if (!futureInterest) {
+                alert('請選擇您的意向後再提交。');
+                return;
             }
+            alert(`感謝您的回覆！您的意向是：${futureInterest.value === 'yes' ? '有興趣' : '無興趣'}`);
         }
     </script>
 </head>
 <body>
     <div class="container">
-        <h1>評估問卷</h1>
+        <h1>長者照護單位文化與服務評估問卷</h1>
         <form id="surveyForm">
             <div class="questions-container">
                 <div class="questions-column">
                     <div class="question">
                         <h2>願景與價值觀</h2>
-                        <p>單位是否有清晰的願景與價值觀，員工能清晰理解？</p>
+                        <p>單位是否有<b>清晰的願景與價值觀</b>，員工能清晰理解？</p>
                         <label><input type="radio" name="visionValues" value="yes">是</label>
                         <label><input type="radio" name="visionValues" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
-                        <h2>心智模式</h2>
-                        <p>員工是否具備同理心與尊重，單位文化是否包容？</p>
+                        <h2>員工心態</h2>
+                        <p>員工是否<b>具備同理心與尊重</b>，單位文化是否包容長者及同事？</p>
                         <label><input type="radio" name="empathy" value="yes">是</label>
                         <label><input type="radio" name="empathy" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
                         <h2>關係與連結</h2>
-                        <p>單位內部是否有有效的溝通機制，信息傳遞是否透明且及時？</p>
+                        <p>單位是否有有效的<b>溝通機制</b>，信息傳遞是否<b>透明且及時</b>？</p>
                         <label><input type="radio" name="communication" value="yes">是</label>
                         <label><input type="radio" name="communication" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
                         <h2>反饋與改進</h2>
-                        <p>單位是否有有效的反饋機制，並能根據反饋持續改進改變策略？</p>
+                        <p>單位是否有有效的反饋機制，並根據<b>反饋持續改進服務質素</b>？</p>
                         <label><input type="radio" name="feedback" value="yes">是</label>
                         <label><input type="radio" name="feedback" value="needsImprovement">需要改善</label>
                     </div>
                 </div>
                 <div class="questions-column">
                     <div class="question">
-                        <h2>實踐</h2>
-                        <p>單位是否有長者為本的服務模式或SOP，並能有效推動改變？</p>
+                        <h2>價值觀實踐</h2>
+                        <p>單位是否有以<b>價值及長者為本的工作流程</b>，並能有效實踐？
+                    </p>
                         <label><input type="radio" name="elderCareSOP" value="yes">是</label>
                         <label><input type="radio" name="elderCareSOP" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
-                        <h2>培訓與發展支持</h2>
-                        <p>單位是否為員工提供了足夠的培訓與發展機會，支持改變所需的技能與行為？</p>
+                        <h2>培訓支持</h2>
+                        <p>員工是否有<b>足夠的培訓</b>，系統性支持所需的技能與行為？</p>
                         <label><input type="radio" name="trainingSupport" value="yes">是</label>
                         <label><input type="radio" name="trainingSupport" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
-                        <h2>權力動態</h2>
-                        <p>員工是否有職權與責任，能有效推動改變？</p>
+                        <h2>權力關係</h2>
+                        <p>員工是否有足夠的</b>職權</b>，能有效推動<b>持續改進的服務質素</b>？</p>
                         <label><input type="radio" name="empowerment" value="yes">是</label>
                         <label><input type="radio" name="empowerment" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
                         <h2>支持與指導</h2>
-                        <p>中層管理是否有效支持與指導員工？</p>
+                        <p><b>中層管理</b>是否有效支持與指導員工？</p>
                         <label><input type="radio" name="supportGuidance" value="yes">是</label>
                         <label><input type="radio" name="supportGuidance" value="needsImprovement">需要改善</label>
                     </div>
