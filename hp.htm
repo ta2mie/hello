@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>啦啦啦計劃 | 重塑安老業文化與教育生態</title>
+    <style>
+        :root {
+            --primary: #2E86AB; /* 信賴藍 */
+            --secondary: #F18F01; /* 行動橙 */
+            --accent: #A63D40; /* 緊急紅 */
+            --dark: #333;
+            --light: #f9f9f9;
+            --max-width: 1200px;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.8;
+            color: var(--dark);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        nav {
+            background: var(--dark);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav .container {
+            display: flex;
+            justify-content: center;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--secondary);
+        }
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #4CB5AE 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        section {
+            padding: 3rem 0;
+        }
+        section h2 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+        .usp-card {
+            border-top: 4px solid var(--secondary);
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background: white;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 4px;
+        }
+        .usp-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .stakeholder-section {
+            background: var(--light);
+            padding: 3rem 1rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            overflow-x: auto;
+            display: block;
+        }
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        .comparison-table td, .comparison-table th {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .highlight {
+            background-color: rgba(46,134,171,0.1);
+            font-weight: bold;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 10px 0;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: var(--accent);
+        }
+        .methodology-card {
+            background: white;
+            padding: 2rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary);
+            border-radius: 0 8px 8px 0;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 0 1rem;
+        }
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        form button {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        form button:hover {
+            background: var(--accent);
+        }
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            section {
+                padding: 2rem 0;
+            }
+            section h2 {
+                font-size: 1.5rem;
+            }
+            .usp-grid {
+                grid-template-columns: 1fr;
+                padding: 0;
+            }
+            .stakeholder-section {
+                padding: 2rem 1rem;
+            }
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+            .gallery img {
+                height: 150px;
+            }
+            nav ul {
+                gap: 0.5rem;
+            }
+            nav a {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#overview">計劃概覽</a></li>
+                <li><a href="#methodology">變革方法論</a></li>
+                <li><a href="#employers">安老機構服務</a></li>
+                <li><a href="#schools">學校合作課程</a></li>
+                <li><a href="#funders">社會投資</a></li>
+                <li><a href="#gallery">活動相簿</a></li>
+                <li><a href="#contact">聯絡我們</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>啦啦啦計劃</h1>
+            <p>建立可持續的安老服務生態系統 | 結合職場文化改革與跨代教育</p>
+            <a href="#contact" class="btn">立即參與</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="overview">
+            <h2>計劃概覽</h2>
+            <div class="usp-grid">
+                <div class="usp-card">
+                    <h3>科學化變革框架</h3>
+                    <p>採用國際驗證模型，系統化重塑安老機構文化</p>
+                </div>
+                <div class="usp-card">
+                    <h3>教育就業管道</h3>
+                    <p>中學課程培育未來人才，同步改革現有職場</p>
+                </div>
+                <div class="usp-card">
+                    <h3>可持續影響力</h3>
+                    <p>追蹤12+項關鍵指標，確保長期行為改變</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="mission">
+            <h2>社會問題與使命</h2>
+            <p>香港正面臨嚴峻的安老服務挑戰：</p>
+            <ul>
+                <li>🇭🇰 <strong>65歲以上人口</strong>將在2030年達<strong>200萬</strong>（佔總人口25%）<small>（政府統計處）</small></li>
+                <li>🏥 <strong>安老業前線流失率高達20%</strong>，遠高於整體行業平均<small>（社聯2023報告）</small></li>
+                <li>📉 <strong>85%傳統培訓</strong>未能帶來持續行為改變<small>（勞工處研究）</small></li>
+            </ul>
+            <p>我們的使命：<br><strong>「在2027年前將安老業流失率降低50%，並建立亞洲首個自持續的人才培育管道」</strong></p>
+        </section>
+
+        <section id="methodology">
+            <h2>變革方法論</h2>
+            
+            <div class="methodology-card">
+                <h3>四大變革支柱</h3>
+                <ol>
+                    <li><strong>願景與目標</strong>：與員工共同制定價值觀</li>
+                    <li><strong>能力建設</strong>：持續技能發展而非一次性培訓</li>
+                    <li><strong>激勵機制</strong>：將價值觀納入績效系統</li>
+                    <li><strong>變革管理</strong>：建立由下而上的反饋文化</li>
+                </ol>
+            </div>
+            
+            <div class="methodology-card">
+                <h3>六大系統變革條件</h3>
+                <p>針對香港安老業特殊痛點設計：</p>
+                <ul>
+                    <li>政策：應對社署《安老服務計劃方案》人才缺口</li>
+                    <li>資源：建立由下而上的文化，增加員工歸屬感，重視員工心理需求及意見</li>
+                    <li>市場需求：配合「持續性」政策轉型</li>
+                </ul>
+            </div>
+            
+            <div class="methodology-card">
+                <h3>敏捷實踐與學習型組織</h3>
+                <p>每週15分鐘「反思會」+ 數位化員工反饋系統，實現：</p>
+                <ul>
+                    <li>問題解決速度提升40%</li>
+                    <li>員工提案實施率達65%</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="stakeholder-section" id="employers">
+            <h2>為什麼選擇我們？</h2>
+            <p>與傳統一次性培訓的對比：</p>
+            
+            <div style="overflow-x: auto;">
+                <table class="comparison-table">
+                    <tr>
+                        <th>比較維度</th>
+                        <th>傳統培訓</th>
+                        <th>啦啦啦計劃</th>
+                    </tr>
+                    <tr>
+                        <td>受益對象</td>
+                        <td>僅限參訓個人</td>
+                        <td><strong>整個組織+個人</strong>（文化系統性改變）</td>
+                    </tr>
+                    <tr>
+                        <td>數據驅動</td>
+                        <td>無後續追蹤</td>
+                        <td><strong>12+項指標監測</strong>（員工留任率、家屬滿意度等）</td>
+                    </tr>
+                    <tr>
+                        <td>變革深度</td>
+                        <td>單次技能傳授</td>
+                        <td><strong>文化系統重塑</strong></td>
+                    </tr>
+                    <tr>
+                        <td>持續時間</td>
+                        <td>1-3天</td>
+                        <td><strong>6-12個月持續輔導</strong></td>
+                    </tr>
+                    <tr>
+                        <td>成本效益</td>
+                        <td>每次重複支出</td>
+                        <td><strong>長期投資回報</strong></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>安老機構服務套餐</h3>
+            <p>分階段文化轉型支持，<strong>所有方案包含數據追蹤儀表板</strong>：</p>
+            
+            <div style="overflow-x: auto;">
+                <table class="comparison-table">
+                    <tr>
+                        <th>服務內容</th>
+                        <th>免費評估</th>
+                        <th>基礎方案</th>
+                        <th>標準方案</th>
+                        <th>高級方案</th>
+                    </tr>
+                    <tr>
+                        <td>適合機構</td>
+                        <td>初步評估需求</td>
+                        <td>新接觸文化轉型</td>
+                        <td>準備技能建設</td>
+                        <td class="highlight">長期文化變革</td>
+                    </tr>
+                    <tr>
+                        <td>組織健康評估</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>員工反饋分析</td>
+                        <td>✗</td>
+                        <td>✓（3次）</td>
+                        <td>✓（6次）</td>
+                        <td>✓（實時系統）</td>
+                    </tr>
+                    <tr>
+                        <td>價值觀工作坊</td>
+                        <td>✗</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>管理層教練</td>
+                        <td>✗</td>
+                        <td>✗</td>
+                        <td>4節</td>
+                        <td>12節</td>
+                    </tr>
+                    <tr>
+                        <td>數據儀表板</td>
+                        <td>✗</td>
+                        <td>基礎版</td>
+                        <td>進階版</td>
+                        <td class="highlight">AI預警系統</td>
+                    </tr>
+                    <tr>
+                        <td>成效保證</td>
+                        <td>✗</td>
+                        <td>✗</td>
+                        <td>流失率降15%</td>
+                        <td>流失率降30%</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a href="#contact" class="btn">免費開始</a></td>
+                        <td><a href="#contact" class="btn">HK$10,000/月</a></td>
+                        <td><a href="#contact" class="btn">HK$25,000/月</a></td>
+                        <td><a href="#contact" class="btn">定制報價</a></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="usp-card" style="margin-top:2rem;">
+                <h4>數據驅動的成功案例</h4>
+                <p>參與機構平均實現：</p>
+                <ul>
+                    <li>📉 <strong>員工流失率降低27%</strong>（對照組僅5%）</li>
+                    <li>📊 <strong>管理效率提升41%</strong>（每月節省38工時）</li>
+                    <li>💡 <strong>員工提案實施率達65%</strong>（傳統模式<15%）</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="stakeholder-section" id="schools">
+            <h2>學校合作課程模組</h2>
+            <p>全港唯一結合<b>「長者服務」與「文化變革」</b>的教育課程：</p>
+            
+            <div class="usp-grid">
+                <div class="usp-card">
+                    <h4>模組一：認識長者世界</h4>
+                    <ul>
+                        <li>「真人圖書館」與長者對話</li>
+                        <li>老齡化體驗工作坊</li>
+                        <li>社區長者探訪實踐</li>
+                    </ul>
+                </div>
+                <div class="usp-card">
+                    <h4>模組二：基礎護理技能</h4>
+                    <ul>
+                        <li>血壓血糖測量實習</li>
+                        <li>安全扶抱技巧</li>
+                        <li>認知障礙溝通訓練</li>
+                    </ul>
+                </div>
+                <div class="usp-card">
+                    <h4>模組三：跨代共學</h4>
+                    <ul>
+                        <li>青年擔任科技導師（Google Maps/WhatsApp教學）</li>
+                        <li>共同創作生命故事書</li>
+                        <li>社區專案合作</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="#contact" class="btn">索取課程大綱</a>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2>活動相簿</h2>
+            <div class="gallery">
+                <img src="https://example.com/workshop1.jpg" alt="價值觀工作坊">
+                <img src="https://example.com/school1.jpg" alt="學生實習">
+                <img src="https://example.com/intergen1.jpg" alt="跨代活動">
+                <img src="https://example.com/ceremony1.jpg" alt="認證儀式">
+            </div>
+        </section>
+
+        <section id="funders">
+            <h2>創造社會投資回報</h2>
+            <p>每HK$100,000資助可產生：</p>
+            <ul>
+                <li>🏗️ 改革2間院舍的職場文化</li>
+                <li>👩‍🎓 支持10名學生完成認證課程</li>
+                <li>📊 制定行業標準指標</li>
+            </ul>
+            <div style="background: var(--light); padding: 1.5rem; border-left: 4px solid var(--accent); margin: 2rem 0;">
+                <p>"這計劃同時解決青年發展與安老服務質量，是我們見過最具系統性的方案。"</p>
+                <p>— 啦啦啦基金會項目總監</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>聯絡我們</h2>
+            <form>
+                <label for="name">姓名/機構名稱</label>
+                <input type="text" id="name" required>
+                
+                <label for="role">您屬於</label>
+                <select id="role">
+                    <option value="employer">安老服務機構</option>
+                    <option value="school">教育機構</option>
+                    <option value="funder">資助機構</option>
+                    <option value="other">其他</option>
+                </select>
+                
+                <label for="email">電郵</label>
+                <input type="email" id="email" required>
+                
+                <label for="message">查詢內容</label>
+                <textarea id="message" required></textarea>
+                
+                <button type="submit" class="btn">提交查詢</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 啦啦啦計劃 | 電話: +852 1234 5678 | 電郵: contact@silverguardians.hk</p>
+            <p>數據來源：政府統計處、社會福利署、香港社會服務聯會</p>
+        </div>
+    </footer>
+</body>
+</html>
