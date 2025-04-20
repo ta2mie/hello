@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>啦啦啦計劃 | 重塑安老業文化與教育生態</title>
+    <title>銀齡守護者計劃 | 重塑安老業文化與教育生態</title>
     <style>
         :root {
             --primary: #2E86AB; /* 信賴藍 */
@@ -59,15 +60,36 @@
             color: var(--secondary);
         }
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #4CB5AE 100%);
+            background: url('https://scontent.fhkg10-1.fna.fbcdn.net/v/t39.30808-6/432744893_122105067230247146_614060810202155470_n.png?_nc_cat=101&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=ybc3vDlMin0Q7kNvwGnagRE&_nc_oc=AdmKcT9psyVGu6kX-389gA65Cih9QSnep6_9zO81ljwRQPDl6EOQpaO0ulpJ1H5O2Ss&_nc_zt=23&_nc_ht=scontent.fhkg10-1.fna&_nc_gid=EvlOGjnpJIbfGyo7K6sLPQ&oh=00_AfFHdOTN0rbPUS0tAW3sDc7k20HwmU_L9Eb5kkGQD4IwiA&oe=680A7D00') no-repeat top center;
+            background-size: cover;
             color: white;
             padding: 5rem 2rem;
             text-align: center;
+            position: relative;
         }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(46, 134, 171, 0.5); /* Semi-transparent green overlay */
+            backdrop-filter: blur(8px); /* Adds blur effect */
+            z-index: 1;
+        }
+
+        .hero > .container {
+            position: relative;
+            z-index: 2; /* Ensures content is above the overlay */
+        }
+
         .hero h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
+
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
@@ -259,8 +281,8 @@
                 <li><a href="#methodology">變革方法論</a></li>
                 <li><a href="#employers">安老機構服務</a></li>
                 <li><a href="#schools">學校合作課程</a></li>
-                <li><a href="#funders">社會投資</a></li>
-                <li><a href="#gallery">活動相簿</a></li>
+                <!--<li><a href="#funders">社會投資</a></li>
+                <li><a href="#gallery">活動相簿</a></li>-->
                 <li><a href="#contact">聯絡我們</a></li>
             </ul>
         </div>
@@ -268,7 +290,7 @@
 
     <header class="hero">
         <div class="container">
-            <h1>啦啦啦計劃</h1>
+            <h1>銀齡守護者計劃</h1>
             <p>建立可持續的安老服務生態系統 | 結合職場文化改革與跨代教育</p>
             <a href="#contact" class="btn">立即參與</a>
         </div>
@@ -410,7 +432,7 @@
                         <td>✓（實時系統）</td>
                     </tr>
                     <tr>
-                        <td>價值觀工作坊</td>
+                        <td>共創價值工作坊</td>
                         <td>✗</td>
                         <td>✓</td>
                         <td>✓</td>
@@ -424,12 +446,19 @@
                         <td>12節</td>
                     </tr>
                     <tr>
+                        <td>員工心態及價值觀培訓</td>
+                        <td>✗</td>
+                        <td>✗</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                    </tr>
+                    <!--<tr>
                         <td>數據儀表板</td>
                         <td>✗</td>
                         <td>基礎版</td>
                         <td>進階版</td>
                         <td class="highlight">AI預警系統</td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td>成效保證</td>
                         <td>✗</td>
@@ -494,7 +523,7 @@
             </div>
         </section>
 
-        <section id="gallery">
+        <!--<section id="gallery">
             <h2>活動相簿</h2>
             <div class="gallery">
                 <img src="https://example.com/workshop1.jpg" alt="價值觀工作坊">
@@ -506,7 +535,7 @@
 
         <section id="funders">
             <h2>創造社會投資回報</h2>
-            <p>每HK$100,000資助可產生：</p>
+            <p>每HK$200,000資助可產生：</p>
             <ul>
                 <li>🏗️ 改革2間院舍的職場文化</li>
                 <li>👩‍🎓 支持10名學生完成認證課程</li>
@@ -516,7 +545,7 @@
                 <p>"這計劃同時解決青年發展與安老服務質量，是我們見過最具系統性的方案。"</p>
                 <p>— 啦啦啦基金會項目總監</p>
             </div>
-        </section>
+        </section>-->
 
         <section id="contact">
             <h2>聯絡我們</h2>
@@ -545,7 +574,7 @@
 
     <footer>
         <div class="container">
-            <p>© 2025 啦啦啦計劃 | 電話: +852 1234 5678 | 電郵: 2mwebnet@gmail.com</p>
+            <p>© 2025 銀齡守護者計劃 | 電話: +852 2338 </p>
             <p>數據來源：<a href="https://www.info.gov.hk/gia/general/202501/08/P2025010800227.htm" target="new">政府統計</a>、<a href="https://www.hkcss.org.hk/upload/svd/%E7%A6%8F%E5%88%A9%E8%AD%B0%E9%A1%8C%E5%8F%8A%E5%84%AA%E6%AC%A1%E5%BB%BA%E8%AD%B0/2023/2023%E7%A6%8F%E5%88%A9%E8%AD%B0%E9%A1%8C%E5%8F%8A%E5%84%AA%E6%AC%A1%E5%BB%BA%E8%AD%B0%E6%9B%B8_%E9%A6%99%E6%B8%AF%E7%A4%BE%E6%9C%83%E6%9C%8D%E5%8B%99%E8%81%AF%E6%9C%83%20(final)_20230606.pdf" target="new">香港社會服務聯會</a></p>
         </div>
     </footer>
