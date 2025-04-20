@@ -5,11 +5,25 @@
     <title>Assessment Survey</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+       :root {
+            --primary: #4A90E2; /* Soft blue */
+            --secondary: #F5F5F5; /* Light gray */
+            --accent: #FF9800; /* Orange */
+            --text-dark: #333; /* Dark text */
+            --text-light: #fff; /* Light text */
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background: url('https://scontent.fhkg10-1.fna.fbcdn.net/v/t39.30808-6/432744893_122105067230247146_614060810202155470_n.png?_nc_cat=101&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=ybc3vDlMin0Q7kNvwGnagRE&_nc_oc=AdmKcT9psyVGu6kX-389gA65Cih9QSnep6_9zO81ljwRQPDl6EOQpaO0ulpJ1H5O2Ss&_nc_zt=23&_nc_ht=scontent.fhkg10-1.fna&_nc_gid=EvlOGjnpJIbfGyo7K6sLPQ&oh=00_AfFHdOTN0rbPUS0tAW3sDc7k20HwmU_L9Eb5kkGQD4IwiA&oe=680A7D00') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-dark);
+        }
+        .overlay {
+            background: rgba(255, 255, 255, 0.8);
+            min-height: 100vh;
+            padding: 20px;
         }
         h1 {
             text-align: center;
@@ -117,6 +131,7 @@
         }
     </style>
     <script>
+        const sessionId = Math.random().toString(36).substring(2) + Date.now().toString(36);
         async function evaluateSurvey() {
             const submitButton = document.querySelector('button[type="button"]');
             submitButton.style.backgroundColor = '#ccc'; // Gray out the button
@@ -145,24 +160,24 @@
             }
 
             const results = {
-                visionValues: false,
-                empathy: false,
-                communication: false,
-                feedback: false,
-                elderCareSOP: false,
-                trainingSupport: false,
-                empowerment: false,
-                supportGuidance: false
+                visionValues: true,
+                empathy: true,
+                communication: true,
+                feedback: true,
+                elderCareSOP: true,
+                trainingSupport: true,
+                empowerment: true,
+                supportGuidance: true
             };
 
-            results.visionValues = document.querySelector('input[name="visionValues"]:checked').value === "needsImprovement";
-            results.empathy = document.querySelector('input[name="empathy"]:checked').value === "needsImprovement";
-            results.communication = document.querySelector('input[name="communication"]:checked').value === "needsImprovement";
-            results.feedback = document.querySelector('input[name="feedback"]:checked').value === "needsImprovement";
-            results.elderCareSOP = document.querySelector('input[name="elderCareSOP"]:checked').value === "needsImprovement";
-            results.trainingSupport = document.querySelector('input[name="trainingSupport"]:checked').value === "needsImprovement";
-            results.empowerment = document.querySelector('input[name="empowerment"]:checked').value === "needsImprovement";
-            results.supportGuidance = document.querySelector('input[name="supportGuidance"]:checked').value === "needsImprovement";
+            results.visionValues = document.querySelector('input[name="visionValues"]:checked').value === "yes";
+            results.empathy = document.querySelector('input[name="empathy"]:checked').value === "yes";
+            results.communication = document.querySelector('input[name="communication"]:checked').value === "yes";
+            results.feedback = document.querySelector('input[name="feedback"]:checked').value === "yes";
+            results.elderCareSOP = document.querySelector('input[name="elderCareSOP"]:checked').value === "yes";
+            results.trainingSupport = document.querySelector('input[name="trainingSupport"]:checked').value === "yes";
+            results.empowerment = document.querySelector('input[name="empowerment"]:checked').value === "yes";
+            results.supportGuidance = document.querySelector('input[name="supportGuidance"]:checked').value === "yes";
 
             let solutionSet = new Set();
             if (results.visionValues) {
@@ -190,14 +205,37 @@
 
             document.getElementById('result').innerHTML = solution;
 
+            const htmlString = solution;
+
+            // First replace <li> tags with commas
+            const withCommas = htmlString.replace(/<\/li><li>|<\/li>|<li>/g, ', ');
+
+            // Then remove all remaining HTML tags
+            const cleanString = withCommas.replace(/<[^>]*>/g, '').trim();
+
+            // Remove any trailing comma
+            const solutionResult = cleanString.replace(/,\s*$/, '');
+
+            const response1 = await fetch('https://hook.us2.make.com/ntyli7tkfld5yhw7zo67cow4q1jxxko2', {
+                 method: 'POST',
+                 headers: {
+                     'Content-Type': 'application/json'
+                 },
+                 body: JSON.stringify({ results, solutionResult, sessionId })
+             });
+ 
+             if (!response1.ok) {
+                 alert('Failed to submit the survey results to the first webhook.');
+             }
+
             // Add the new question and submission button
             const followUpContainer = document.createElement('div');
             followUpContainer.innerHTML = `
                 <div class="question">
                     <h2>未來服務意向</h2>
-                    <p>您是否有興趣嘗試我們的服務？</p>
-                    <label><input type="radio" name="futureInterest" value="yes">是</label>
-                    <label><input type="radio" name="futureInterest" value="no">否</label>
+                    <p>如有興趣嘗試我們的服務，請留下你的名字及聯絡電話。</p>
+                    <label>姓名：<input type="text" name="name"></label>
+                    <label>電話：<input type="text" name="mobile"></label>
                 </div>
                 <button type="button" onclick="submitFollowUp()">提交意向</button>
             `;
@@ -205,41 +243,63 @@
         }
 
         function submitFollowUp() {
-            const futureInterest = document.querySelector('input[name="futureInterest"]:checked');
-            if (!futureInterest) {
-                alert('請選擇您的意向後再提交。');
+            const name = document.querySelector('input[name="name"]').value;
+            const mobile = document.querySelector('input[name="mobile"]').value;
+
+            if (!name || !mobile) {
+                alert('請填寫姓名和電話。');
                 return;
             }
-            alert(`感謝您的回覆！您的意向是：${futureInterest.value === 'yes' ? '有興趣' : '無興趣'}`);
+
+            const followUpData = {
+                name: name,
+                mobile: mobile
+            };
+
+            fetch('https://hook.us2.make.com/ntyli7tkfld5yhw7zo67cow4q1jxxko2', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({followUpData, sessionId})
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('感謝你的意向，我們會盡快聯絡你！');
+                } else {
+                    alert('提交意向失敗，請稍後再試。');
+                }
+            });
         }
     </script>
 </head>
 <body>
+    <div class="overlay">
     <div class="container">
         <h1>長者照護單位文化與服務評估問卷</h1>
         <form id="surveyForm">
             <div class="questions-container">
                 <div class="questions-column">
                     <div class="question">
-                        <h2>願景與價值觀</h2>
+                        <h2>1. 願景與價值觀</h2>
                         <p>單位是否有<b>清晰的願景與價值觀</b>，員工能清晰理解？</p>
                         <label><input type="radio" name="visionValues" value="yes">是</label>
                         <label><input type="radio" name="visionValues" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
-                        <h2>員工心態</h2>
+                        <h2>2. 員工心態</h2>
                         <p>員工是否<b>具備同理心與尊重</b>，單位文化是否包容長者及同事？</p>
                         <label><input type="radio" name="empathy" value="yes">是</label>
                         <label><input type="radio" name="empathy" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
-                        <h2>關係與連結</h2>
+                        <h2>3. 關係與連結</h2>
                         <p>單位是否有有效的<b>溝通機制</b>，信息傳遞是否<b>透明且及時</b>？</p>
                         <label><input type="radio" name="communication" value="yes">是</label>
                         <label><input type="radio" name="communication" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
-                        <h2>反饋與改進</h2>
+                        <h2>4. 反饋與改進</h2>
                         <p>單位是否有有效的反饋機制，並根據<b>反饋持續改進服務質素</b>？</p>
                         <label><input type="radio" name="feedback" value="yes">是</label>
                         <label><input type="radio" name="feedback" value="needsImprovement">需要改善</label>
@@ -247,26 +307,26 @@
                 </div>
                 <div class="questions-column">
                     <div class="question">
-                        <h2>價值觀實踐</h2>
+                        <h2>5. 價值觀實踐</h2>
                         <p>單位是否有以<b>價值及長者為本的工作流程</b>，並能有效實踐？
                     </p>
                         <label><input type="radio" name="elderCareSOP" value="yes">是</label>
                         <label><input type="radio" name="elderCareSOP" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
-                        <h2>培訓支持</h2>
+                        <h2>6. 培訓支持</h2>
                         <p>員工是否有<b>足夠的培訓</b>，系統性支持所需的技能與行為？</p>
                         <label><input type="radio" name="trainingSupport" value="yes">是</label>
                         <label><input type="radio" name="trainingSupport" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
-                        <h2>權力關係</h2>
+                        <h2>7. 權力關係</h2>
                         <p>員工是否有足夠的</b>職權</b>，能有效推動<b>持續改進的服務質素</b>？</p>
                         <label><input type="radio" name="empowerment" value="yes">是</label>
                         <label><input type="radio" name="empowerment" value="needsImprovement">需要改善</label>
                     </div>
                     <div class="question">
-                        <h2>支持與指導</h2>
+                        <h2>8. 支持與指導</h2>
                         <p><b>中層管理</b>是否有效支持與指導員工？</p>
                         <label><input type="radio" name="supportGuidance" value="yes">是</label>
                         <label><input type="radio" name="supportGuidance" value="needsImprovement">需要改善</label>
@@ -279,5 +339,6 @@
             </div>
         </form>
     </div>
+</div>
 </body>
 </html>
