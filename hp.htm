@@ -13,6 +13,7 @@
             --dark: #333;
             --light: #f9f9f9;
             --max-width: 1200px;
+            --section-spacing: 4rem;
         }
         * {
             box-sizing: border-box;
@@ -36,6 +37,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         nav .container {
             display: flex;
@@ -53,21 +55,23 @@
             color: white;
             text-decoration: none;
             font-weight: bold;
-            padding: 0.5rem;
-            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s;
+            border-radius: 4px;
         }
         nav a:hover {
             color: var(--secondary);
+            background: rgba(255,255,255,0.1);
         }
         .hero {
             background: url('https://scontent.fhkg10-1.fna.fbcdn.net/v/t39.30808-6/432744893_122105067230247146_614060810202155470_n.png?_nc_cat=101&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=ybc3vDlMin0Q7kNvwGnagRE&_nc_oc=AdmKcT9psyVGu6kX-389gA65Cih9QSnep6_9zO81ljwRQPDl6EOQpaO0ulpJ1H5O2Ss&_nc_zt=23&_nc_ht=scontent.fhkg10-1.fna&_nc_gid=EvlOGjnpJIbfGyo7K6sLPQ&oh=00_AfFHdOTN0rbPUS0tAW3sDc7k20HwmU_L9Eb5kkGQD4IwiA&oe=680A7D00') no-repeat top center;
             background-size: cover;
             color: white;
-            padding: 5rem 2rem;
+            padding: 8rem 2rem;
             text-align: center;
             position: relative;
+            margin-bottom: var(--section-spacing);
         }
-
         .hero::before {
             content: '';
             position: absolute;
@@ -75,33 +79,56 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(46, 134, 171, 0.5); /* Semi-transparent green overlay */
-            backdrop-filter: blur(8px); /* Adds blur effect */
+            background: rgba(46, 134, 171, 0.7);
             z-index: 1;
         }
-
         .hero > .container {
             position: relative;
-            z-index: 2; /* Ensures content is above the overlay */
+            z-index: 2;
         }
-
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
-
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
         section {
-            padding: 3rem 0;
+            padding: var(--section-spacing) 0;
+            position: relative;
+        }
+        section:not(:last-child)::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 3rem auto 0;
+            border-radius: 2px;
         }
         section h2 {
             text-align: center;
             color: var(--primary);
-            margin-bottom: 2rem;
-            font-size: 2rem;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
         }
         .usp-grid {
             display: grid;
@@ -111,21 +138,27 @@
         }
         .usp-card {
             border-top: 4px solid var(--secondary);
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             background: white;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-radius: 4px;
+            transition: all 0.3s;
+            border-radius: 8px;
         }
         .usp-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .usp-card h3 {
+            color: var(--primary);
+            margin-top: 0;
         }
         .stakeholder-section {
             background: var(--light);
-            padding: 3rem 1rem;
-            margin: 2rem 0;
+            padding: 3rem;
+            margin: 3rem 0;
             border-radius: 8px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
         }
         .comparison-table {
             width: 100%;
@@ -133,20 +166,22 @@
             margin: 2rem 0;
             overflow-x: auto;
             display: block;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .comparison-table th {
             background: var(--primary);
             color: white;
             padding: 15px;
             text-align: left;
+            font-weight: 600;
         }
         .comparison-table td, .comparison-table th {
-            padding: 12px;
-            border: 1px solid #ddd;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
             text-align: left;
         }
         .comparison-table tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: #f8f8f8;
         }
         .highlight {
             background-color: rgba(46,134,171,0.1);
@@ -154,66 +189,85 @@
         }
         .btn {
             display: inline-block;
-            padding: 12px 24px;
+            padding: 12px 30px;
             background: var(--secondary);
             color: white;
             text-decoration: none;
             border-radius: 4px;
             font-weight: bold;
             margin: 10px 0;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
         }
         .btn:hover {
             background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         .methodology-card {
             background: white;
-            padding: 2rem;
-            margin: 1rem 0;
+            padding: 2.5rem;
+            margin: 2rem 0;
             border-left: 4px solid var(--primary);
             border-radius: 0 8px 8px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        .methodology-card h3 {
+            color: var(--primary);
+            margin-top: 0;
         }
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1rem;
+            gap: 1.5rem;
             margin: 2rem 0;
             padding: 0 1rem;
         }
         .gallery img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            border-radius: 4px;
-            transition: transform 0.3s;
+            border-radius: 8px;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
         .gallery img:hover {
             transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         form {
             max-width: 600px;
             margin: 0 auto;
-            background: var(--light);
-            padding: 2rem;
+            background: white;
+            padding: 2.5rem;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         form label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             font-weight: bold;
+            color: var(--dark);
         }
         form input, form select, form textarea {
             width: 100%;
-            padding: 0.8rem;
-            margin-bottom: 1rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 1rem;
+            transition: border 0.3s;
+        }
+        form input:focus, form select:focus, form textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(46,134,171,0.2);
         }
         form button {
             width: 100%;
-            padding: 0.8rem;
+            padding: 1rem;
             background: var(--secondary);
             color: white;
             border: none;
@@ -221,7 +275,7 @@
             font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
         }
         form button:hover {
             background: var(--accent);
@@ -229,44 +283,57 @@
         footer {
             background: var(--dark);
             color: white;
-            padding: 2rem;
+            padding: 3rem 0;
             text-align: center;
+            margin-top: var(--section-spacing);
+        }
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
         }
 
         /* Mobile responsiveness */
         @media (max-width: 768px) {
+            :root {
+                --section-spacing: 3rem;
+            }
             .hero {
-                padding: 3rem 1rem;
+                padding: 5rem 1rem;
             }
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             .hero p {
-                font-size: 1rem;
-            }
-            section {
-                padding: 2rem 0;
+                font-size: 1.2rem;
             }
             section h2 {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
             }
             .usp-grid {
                 grid-template-columns: 1fr;
-                padding: 0;
+                gap: 1.5rem;
             }
             .stakeholder-section {
-                padding: 2rem 1rem;
+                padding: 2rem;
+            }
+            .methodology-card {
+                padding: 1.5rem;
             }
             .comparison-table {
                 font-size: 0.9rem;
             }
-            .gallery img {
-                height: 150px;
+            .gallery {
+                grid-template-columns: 1fr;
             }
             nav ul {
                 gap: 0.5rem;
             }
             nav a {
+                padding: 0.5rem;
                 font-size: 0.9rem;
             }
         }
