@@ -8,6 +8,108 @@
       font-family: Arial, sans-serif;
       margin: 20px;
     }
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Service Selection Criteria Calculator</h2>
+  <label for="effort">Effort (1-4 = Low, 5-7 = Medium, 8-10 = High):</label>
+  <input type="number" id="effort" min="1" max="10" required>
+
+  <label for="impact">Impact (1-4 = Low, 5-7 = Medium, 8-10 = High):</label>
+  <input type="number" id="impact" min="1" max="10" required>
+
+  <label for="incomePotential">Income Potential (1-4 = Low, 5-7 = Medium, 8-10 = High):</label>
+  <input type="number" id="incomePotential" min="1" max="10" required>
+
+  <label for="otherReturn">Other Return (1-4 = Low, 5-7 = Medium, 8-10 = High):</label>
+  <input type="number" id="otherReturn" min="1" max="10" required>
+
+  <button onclick="calculateSelection()">Calculate</button>
+
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+function getLevel(value) {
+  if (value >= 1 && value <= 4) return 'Low';
+  if (value >= 5 && value <= 7) return 'Medium';
+  if (value >= 8 && value <= 10) return 'High';
+}
+
+function evaluateSelection(effort, impact, incomePotential, otherReturn) {
+  // Convert effort to inverse scoring since higher effort means more challenge
+  const effortScore = effort === 'Low' ? 3 : effort === 'Medium' ? 2 : 1;
+  const impactScore = impact === 'Low' ? 1 : impact === 'Medium' ? 2 : 3;
+  const incomeScore = incomePotential === 'Low' ? 1 : incomePotential === 'Medium' ? 2 : 3;
+  const returnScore = otherReturn === 'Low' ? 1 : otherReturn === 'Medium' ? 2 : 3;
+
+  const totalScore = effortScore + impactScore + incomeScore + returnScore;
+
+  // Apply selection criteria logic
+  const income = incomePotential === 'High' ? 'yes' : 'no';
+  if ((effort === 'Low' && (income === 'yes' || (income === 'no' && impact === 'High'))) ||
+      (effort === 'Medium' && income === 'yes') ||
+      (effort === 'High' && income === 'yes' && otherReturn === 'High')) {
+    return { decision: 'Recommend Service', totalScore };
+  } else {
+    return { decision: 'Do Not Recommend Service', totalScore };
+  }
+}
+
+function calculateSelection() {
+  const effortInput = parseInt(document.getElementById('effort').value);
+  const impactInput = parseInt(document.getElementById('impact').value);
+  const incomePotentialInput = parseInt(document.getElementById('incomePotential').value);
+  const otherReturnInput = parseInt(document.getElementById('otherReturn').value);
+
+  const effort = getLevel(effortInput);
+  const impact = getLevel(impactInput);
+  const incomePotential = getLevel(incomePotentialInput);
+  const otherReturn = getLevel(otherReturnInput);
+
+  const result = evaluateSelection(effort, impact, incomePotential, otherReturn);
+  document.getElementById('result').innerHTML = `Decision: ${result.decision}<br>Total Score: ${result.totalScore}`;
+}
+</script>
+
+
+  <meta charset="UTF-8" />
+  <title>Service Selection Criteria Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
