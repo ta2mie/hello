@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Service Selection Criteria Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f5f5f5;
+    }
+    h2 {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Service Selection Criteria Evaluation Table</h2>
+
+<p>This table lists all 81 possible combinations of the four criteria and evaluates whether to provide service.</p>
+
+<table id="criteriaTable">
+  <thead>
+    <tr>
+      <th>Effort</th>
+      <th>Impact</th>
+      <th>Income Potential</th>
+      <th>Other Return</th>
+      <th>Decision</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Combinations will be inserted here -->
+  </tbody>
+</table>
+
+<script>
+// Define levels for each criterion
+const levels = ['Low', 'Medium', 'High'];
+
+// Generate all possible combinations
+function generateAllCombinations() {
+  const tbody = document.querySelector('#criteriaTable tbody');
+  const combinations = [];
+
+  for (let effort of levels) {
+    for (let impact of levels) {
+      for (let incomePotential of levels) {
+        for (let otherReturn of levels) {
+          combinations.push([effort, impact, incomePotential, otherReturn]);
+        }
+      }
+    }
+  }
+
+  // Evaluate and render each combination
+  combinations.forEach(combo => {
+    const row = document.createElement('tr');
+
+    combo.forEach(value => {
+      const cell = document.createElement('td');
+      cell.textContent = value;
+      row.appendChild(cell);
+    });
+
+    const decision = evaluateSelection(...combo);
+    const decisionCell = document.createElement('td');
+    decisionCell.textContent = decision;
+    row.appendChild(decisionCell);
+
+    tbody.appendChild(row);
+  });
+}
+
+// Decision logic based on your criteria
+function evaluateSelection(effort, impact, incomePotential, returnVal) {
+  // Convert income potential into binary (yes/no)
+  const income = incomePotential === 'High' ? 'yes' : 'no';
+
+  // Apply your selection criteria logic
+  if ((effort === 'Low' && (income === 'yes' || (income === 'no' && impact === 'High'))) ||
+      (effort === 'Medium' && income === 'yes') ||
+      (effort === 'High' && income === 'yes' && returnVal === 'High')) {
+    return 'Recommend Service';
+  } else {
+    return 'Do Not Recommend Service';
+  }
+}
+
+// Run on page load
+document.addEventListener('DOMContentLoaded', () => {
+  generateAllCombinations();
+});
+</script>
+
+</body>
+</html>
