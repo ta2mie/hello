@@ -2,103 +2,120 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Service Selection Criteria Calculator</title>
+  <title>Service Recommendation Calculator</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    .container {
-      max-width: 600px;
-      margin: auto;
+      margin: 30px;
+      max-width: 700px;
     }
     label {
       display: block;
-      margin-top: 10px;
+      margin-top: 15px;
     }
     input[type="number"] {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
+      width: 60px;
+      padding: 5px;
     }
     button {
       margin-top: 20px;
       padding: 10px 20px;
-      background-color: #4CAF50;
+      background-color: #28a745;
       color: white;
       border: none;
       cursor: pointer;
     }
-    button:hover {
-      background-color: #45a049;
-    }
     .result {
       margin-top: 20px;
-      font-weight: bold;
+      font-size: 1.1em;
+      line-height: 1.5;
     }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <h2>Service Selection Criteria Calculator</h2>
-  <label for="effort">Effort (1-4 = Low, 5-7 = Medium, 8-10 = High):</label>
-  <input type="number" id="effort" min="1" max="10" required>
+<h2>Service Recommendation Calculator</h2>
 
-  <label for="impact">Impact (1-4 = Low, 5-7 = Medium, 8-10 = High):</label>
-  <input type="number" id="impact" min="1" max="10" required>
+<p><strong>Please enter a value between 1 and 10 for each criterion:</strong></p>
 
-  <label for="incomePotential">Income Potential (1-4 = Low, 5-7 = Medium, 8-10 = High):</label>
-  <input type="number" id="incomePotential" min="1" max="10" required>
+<label for="effort">Effort (1-10):</label>
+<input type="number" id="effort" min="1" max="10" required />
 
-  <label for="otherReturn">Other Return (1-4 = Low, 5-7 = Medium, 8-10 = High):</label>
-  <input type="number" id="otherReturn" min="1" max="10" required>
+<label for="impact">Impact (1-10):</label>
+<input type="number" id="impact" min="1" max="10" required />
 
-  <button onclick="calculateSelection()">Calculate</button>
+<label for="income">Income Potential (1-10):</label>
+<input type="number" id="incomePotential" min="1" max="10" required />
 
-  <div class="result" id="result"></div>
-</div>
+<label for="otherReturn">Other Return (1-10):</label>
+<input type="number" id="otherReturn" min="1" max="10" required />
+
+<button onclick="calculate()">Calculate</button>
+
+<div class="result" id="result"></div>
 
 <script>
 function getLevel(value) {
-  if (value >= 1 && value <= 4) return 'Low';
-  if (value >= 5 && value <= 7) return 'Medium';
-  if (value >= 8 && value <= 10) return 'High';
+  if (value >= 1 && value <= 4) return "Low";
+  if (value >= 5 && value <= 7) return "Medium";
+  if (value >= 8 && value <= 10) return "High";
 }
 
-function evaluateSelection(effort, impact, incomePotential, otherReturn) {
-  // Convert effort to inverse scoring since higher effort means more challenge
-  const effortScore = effort === 'Low' ? 3 : effort === 'Medium' ? 2 : 1;
-  const impactScore = impact === 'Low' ? 1 : impact === 'Medium' ? 2 : 3;
-  const incomeScore = incomePotential === 'Low' ? 1 : incomePotential === 'Medium' ? 2 : 3;
-  const returnScore = otherReturn === 'Low' ? 1 : otherReturn === 'Medium' ? 2 : 3;
-
-  const totalScore = effortScore + impactScore + incomeScore + returnScore;
-
-  // Apply selection criteria logic
-  const income = incomePotential === 'High' ? 'yes' : 'no';
-  if ((effort === 'Low' && (income === 'yes' || (income === 'no' && impact === 'High'))) ||
-      (effort === 'Medium' && income === 'yes') ||
-      (effort === 'High' && income === 'yes' && otherReturn === 'High')) {
-    return { decision: 'Recommend Service', totalScore };
-  } else {
-    return { decision: 'Do Not Recommend Service', totalScore };
-  }
-}
-
-function calculateSelection() {
-  const effortInput = parseInt(document.getElementById('effort').value);
-  const impactInput = parseInt(document.getElementById('impact').value);
-  const incomePotentialInput = parseInt(document.getElementById('incomePotential').value);
-  const otherReturnInput = parseInt(document.getElementById('otherReturn').value);
+function calculate() {
+  const effortInput = parseInt(document.getElementById("effort").value);
+  const impactInput = parseInt(document.getElementById("impact").value);
+  const incomeInput = parseInt(document.getElementById("incomePotential").value);
+  const returnInput = parseInt(document.getElementById("otherReturn").value);
 
   const effort = getLevel(effortInput);
   const impact = getLevel(impactInput);
-  const incomePotential = getLevel(incomePotentialInput);
-  const otherReturn = getLevel(otherReturnInput);
+  const income = getLevel(incomeInput);
+  const otherReturn = getLevel(returnInput);
 
-  const result = evaluateSelection(effort, impact, incomePotential, otherReturn);
-  document.getElementById('result').innerHTML = `Decision: ${result.decision}<br>Total Score: ${result.totalScore}`;
+  // Scoring logic
+  const effortScore = effort === "Low" ? 3 : effort === "Medium" ? 2 : 1;
+  const impactScore = impact === "High" ? 3 : impact === "Medium" ? 2 : 1;
+  const incomeScore = income === "High" ? 3 : income === "Medium" ? 2 : 1;
+  const returnScore = otherReturn === "High" ? 3 : otherReturn === "Medium" ? 2 : 1;
+
+  const totalScore = effortScore + impactScore + incomeScore + returnScore;
+
+  // Decision Logic
+  let decision = "";
+  if (effort === "Low") {
+    if (income === "High") {
+      decision = "✅ Recommend Service";
+    } else if (impact === "High") {
+      decision = "✅ Recommend Service (due to High Impact)";
+    } else {
+      decision = "✅ Recommend Service (Low Effort)";
+    }
+  } else if (effort === "Medium") {
+    if (income === "High") {
+      decision = "✅ Recommend Service";
+    } else {
+      decision = "❌ Consider Carefully";
+    }
+  } else if (effort === "High") {
+    if (income === "High" && otherReturn === "High") {
+      decision = "❌ Only if High Return";
+    } else {
+      decision = "❌ Do Not Recommend Service";
+    }
+  }
+
+  document.getElementById("result").innerHTML = `
+    <strong>Results:</strong><br/><br/>
+    
+    🔹 Effort: ${effort} (Input: ${effortInput})<br/>
+    🔹 Impact: ${impact} (Input: ${impactInput})<br/>
+    🔹 Income: ${income} (Input: ${incomeInput})<br/>
+    🔹 Return: ${otherReturn} (Input: ${returnInput})<br/><br/>
+    
+    <strong>Decision:</strong> ${decision}<br/>
+    <strong>Total Score:</strong> ${totalScore}/12<br/>
+    <small>(Higher score = stronger opportunity)</small>
+  `;
 }
 </script>
 
