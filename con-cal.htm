@@ -1,63 +1,82 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>服务选择准则计算器</title>
-<style>
-  table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-  th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
-  th { background-color: #f2f2f2; }
-</style>
+  <meta charset="UTF-8" />
+  <title>Service Selection Criteria Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f5f5f5;
+    }
+    h2 {
+      color: #333;
+    }
+  </style>
 </head>
 <body>
 
-<h2>服务选择准则评估表</h2>
+<h2>Service Selection Criteria Evaluation Table</h2>
+
+<p>This table lists all 81 possible combinations of the four criteria and evaluates whether to provide service.</p>
 
 <table id="criteriaTable">
   <thead>
     <tr>
-      <th>投入程度</th>
-      <th>影响</th>
-      <th>收入潜力</th>
-      <th>其他回报</th>
-      <th>决策结果</th>
+      <th>Effort</th>
+      <th>Impact</th>
+      <th>Income Potential</th>
+      <th>Other Return</th>
+      <th>Decision</th>
     </tr>
   </thead>
   <tbody>
-    <!-- 动态生成的内容将会插入到这里 -->
+    <!-- Combinations will be inserted here -->
   </tbody>
 </table>
 
 <script>
-// 定义每个标准的级别
-const criteriaLevels = ['低', '中', '高'];
+// Define levels for each criterion
+const levels = ['Low', 'Medium', 'High'];
 
-// 生成所有可能的组合
+// Generate all possible combinations
 function generateAllCombinations() {
   const tbody = document.querySelector('#criteriaTable tbody');
   const combinations = [];
-  for (let effort of criteriaLevels) {
-    for (let impact of criteriaLevels) {
-      for (let incomePotential of criteriaLevels) {
-        for (let otherReturn of criteriaLevels) {
+
+  for (let effort of levels) {
+    for (let impact of levels) {
+      for (let incomePotential of levels) {
+        for (let otherReturn of levels) {
           combinations.push([effort, impact, incomePotential, otherReturn]);
         }
       }
     }
   }
 
-  // 对每种组合进行评估并添加到表格中
-  combinations.forEach(combination => {
+  // Evaluate and render each combination
+  combinations.forEach(combo => {
     const row = document.createElement('tr');
 
-    combination.forEach(level => {
+    combo.forEach(value => {
       const cell = document.createElement('td');
-      cell.textContent = level;
+      cell.textContent = value;
       row.appendChild(cell);
     });
 
-    // 计算决策结果
-    const decision = evaluateServiceSelection(...combination);
+    const decision = evaluateSelection(...combo);
     const decisionCell = document.createElement('td');
     decisionCell.textContent = decision;
     row.appendChild(decisionCell);
@@ -66,21 +85,22 @@ function generateAllCombinations() {
   });
 }
 
-function evaluateServiceSelection(effort, impact, incomePotential, returnVal) {
-  // 收入潜力转换为可支付/不可支付
-  const income = incomePotential === '高' ? 'yes' : 'no';
-  
-  // 根据你的准则设置逻辑
-  if ((effort === '低' && (income === 'yes' || (income === 'no' && impact === '高'))) || 
-      (effort === '中' && income === 'yes') ||
-      (effort === '高' && income === 'yes' && returnVal === '高')) {
-    return "建议提供服务";
+// Decision logic based on your criteria
+function evaluateSelection(effort, impact, incomePotential, returnVal) {
+  // Convert income potential into binary (yes/no)
+  const income = incomePotential === 'High' ? 'yes' : 'no';
+
+  // Apply your selection criteria logic
+  if ((effort === 'Low' && (income === 'yes' || (income === 'no' && impact === 'High'))) ||
+      (effort === 'Medium' && income === 'yes') ||
+      (effort === 'High' && income === 'yes' && returnVal === 'High')) {
+    return 'Recommend Service';
   } else {
-    return "不建议提供服务";
+    return 'Do Not Recommend Service';
   }
 }
 
-// 页面加载完成后生成表格
+// Run on page load
 document.addEventListener('DOMContentLoaded', () => {
   generateAllCombinations();
 });
