@@ -7,7 +7,10 @@
     body {
       font-family: Arial, sans-serif;
       margin: 30px;
-      max-width: 700px;
+      max-width: 900px;
+    }
+    h2 {
+      margin-top: 40px;
     }
     label {
       display: block;
@@ -30,11 +33,56 @@
       font-size: 1.1em;
       line-height: 1.5;
     }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f5f5f5;
+    }
   </style>
 </head>
 <body>
 
-<h2>Service Recommendation Calculator</h2>
+<h1>Service Recommendation Calculator</h1>
+
+<p><strong>This tool helps you evaluate whether to offer services based on four weighted criteria:</strong></p>
+
+<!-- Criteria Table -->
+<table>
+  <thead>
+    <tr>
+      <th>Criterion</th>
+      <th>Level</th>
+      <th>Example Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td rowspan="3"><strong>Effort</strong></td><td>Low</td><td>Simple training package, minimal customization, easy logistics</td></tr>
+    <tr><td>Medium</td><td>Some tailoring needed, moderate coordination with staff</td></tr>
+    <tr><td>High</td><td>Complex integration into systems, long-term involvement, high resource use</td></tr>
+
+    <tr><td rowspan="3"><strong>Impact</strong></td><td>Low</td><td>Limited to one unit or small group, short-term effect</td></tr>
+    <tr><td>Medium</td><td>Department-level change, visible improvements in morale or quality</td></tr>
+    <tr><td>High</td><td>Systemic culture shift across multiple units or organizations</td></tr>
+
+    <tr><td rowspan="3"><strong>Income</strong></td><td>Low</td><td>Cannot pay; needs full subsidy or donation</td></tr>
+    <tr><td>Medium</td><td>Can cover partial costs (e.g., materials only)</td></tr>
+    <tr><td>High</td><td>Willing and able to pay full market rate for services</td></tr>
+
+    <tr><td rowspan="3"><strong>Return</strong></td><td>Low</td><td>No advocacy, no visibility, no partnership potential</td></tr>
+    <tr><td>Medium</td><td>May provide testimonials, referrals, or modest media exposure</td></tr>
+    <tr><td>High</td><td>Strong public endorsement, media interest, potential for scaling partnerships</td></tr>
+  </tbody>
+</table>
+
+<h2>Input Your Values (1–10)</h2>
 
 <p><strong>Please enter a value between 1 and 10 for each criterion:</strong></p>
 
@@ -44,7 +92,7 @@
 <label for="impact">Impact (1-10):</label>
 <input type="number" id="impact" min="1" max="10" required />
 
-<label for="income">Income Potential (1-10):</label>
+<label for="incomePotential">Income Potential (1-10):</label>
 <input type="number" id="incomePotential" min="1" max="10" required />
 
 <label for="otherReturn">Other Return (1-10):</label>
