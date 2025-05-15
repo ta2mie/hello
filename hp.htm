@@ -1,10 +1,11 @@
 
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>銀齡守護者計劃 | 重塑安老業文化與教育生態</title>
+    <title>銀齡守護者計劃 | 重塑安老業文化與教育生態  [Prototype]</title>
     <style>
         :root {
             --primary: #2E86AB; /* 信賴藍 */
@@ -104,38 +105,43 @@
             text-shadow: 0 1px 2px rgba(0,0,0,0.3);
         }
         
-        /* ==================== Section Styling ==================== */
-        section {
-            padding: var(--section-spacing) 0;
-            position: relative;
-        }
-        section:not(:last-child)::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: var(--secondary);
-            margin: 3rem auto 0;
-            border-radius: 2px;
-        }
-        section h2 {
-            text-align: center;
-            color: var(--primary);
-            margin-bottom: 3rem;
-            font-size: 2.2rem;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-        section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--secondary);
-        }
+         /* Reduced spacing for sections */
+    section {
+        padding: 2rem 0; /* Reduced from var(--section-spacing) */
+    }
+
+    section h2 {
+        margin-bottom: 1.5rem; /* Reduced spacing below headings */
+        color: #2E86AB; 
+    }
+
+    /* Adjusted spacing for lists and paragraphs */
+    section ul, section p {
+        margin-bottom: 1rem; /* Reduced spacing between elements */
+    }
+
+    /* Alumni image alignment */
+    .alumni-image {
+        float: none;
+        width: 55%; /* Adjust the width as needed */
+        margin-right: 1.5rem; /* Add spacing between the image and text */
+        margin-bottom: 1rem; /* Add spacing below the image */
+        border-radius: 8px; /* Optional: Add rounded corners */
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    }
+
+    /* industry alignment */
+    .industry-image {
+        float: none;
+        width: 80%; /* Adjust the width as needed */
+        margin-right: 1.5rem; /* Add spacing between the image and text */
+        margin-bottom: 1rem; /* Add spacing below the image */
+        border-radius: 8px; /* Optional: Add rounded corners */
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    }
+
+    /* Ensure proper layout on smaller screens */
+    
         
         /* ==================== Card Components ==================== */
         .usp-grid {
@@ -357,6 +363,18 @@
                 padding: 0.5rem;
                 font-size: 0.9rem;
             }
+            .alumni-image {
+                float: none;
+                width: 100%; /* Full width on smaller screens */
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+            }
+            .industry-image {
+                float: none;
+                width: 100%; /* Full width on smaller screens */
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -366,7 +384,7 @@
         <div class="container">
             <ul>
                 <li><a href="#overview">計劃概覽</a></li>
-                <li><a href="#methodology">變革方法論</a></li>
+                <li><a href="#methodology">改革方法</a></li>
                 <li><a href="#employers">安老機構服務</a></li>
                 <li><a href="#schools">學校合作課程</a></li>
                 <li><a href="#contact">聯絡我們</a></li>
@@ -387,8 +405,8 @@
             <h2>計劃概覽</h2>
             <div class="usp-grid">
                 <div class="usp-card">
-                    <h3>科學化變革框架</h3>
-                    <p>採用國際驗證模型，系統化重塑安老機構同理文化</p>
+                    <h3>系統性改革框架</h3>
+                    <p>採用國際改革模型，系統化重塑安老機構同理文化</p>
                 </div>
                 <div class="usp-card">
                     <h3>教育就業管道</h3>
@@ -403,51 +421,45 @@
 
         <section id="mission">
             <h2>社會問題與使命</h2>
-            <p>香港正面臨嚴峻的安老服務挑戰：</p>
+            <h3>香港正面臨嚴峻的安老服務挑戰：</h3>
             <ul>
                 <li>🇭🇰 <strong>65歲以上人口</strong>將在2030年達<strong>200萬</strong>（佔總人口25%）<small>（政府統計處）</small></li>
                 <li>🏥 <strong>安老業前線流失率高達20%</strong>，遠高於整體行業平均<small>（社聯2023報告）</small></li>
                 <li>📉 <strong>85%傳統培訓</strong>未能帶來持續行為改變<small>（綜合勞工處培訓效益調查及社聯行業研究）</small></li>
+            
+       
             </ul>
-            <p>我們的使命：<br><strong>「在2027年前將安老業流失率降低50%，並建立亞洲首個自持續的人才培育管道」</strong></p>
+            <h3>我們過去畢業生對工作滿足感及留職因素：</h3>
+            <img src="Alumni Survey Result.png" alt="Alumni Survey Result" class="alumni-image">
+            <h3>我們的使命：</h3>
+            <ul>
+                <li>透過教育、賦權及社會創新,宣揚以仁為本的精神及培育更多創革者,倡導健康晚年</li>
+                    <li>發掘並連結志同道合的創革者,在高齡化社會中啟發更多人擁抱慈悲為本的價值</li>
+                </ul><h3>我們的價值觀：</h3>
+            <ul>
+                <li>慈悲同理、持續學習、社會責任、創新思維</li>
+            <li>我們相信，<strong>人人都是銀齡守護者 處處都有銀齡守護者</strong></li>
+        </ul>
         </section>
 
+
         <section id="methodology">
-            <h2>變革方法論</h2>
-            
-            <div class="methodology-card">
-                <h3>四大變革支柱</h3>
-                <ol>
-                    <li><strong>願景與目標</strong>：與員工共同制定價值觀及同理文化</li>
-                    <li><strong>能力建設</strong>：持續軟技能及心態發展而非一次性培訓</li>
-                    <li><strong>系統機制</strong>：將價值觀納入工作及溝通流程</li>
-                    <li><strong>變革管理</strong>：建立由下而上的反饋文化</li>
-                </ol>
-            </div>
+            <h2>改革方法</h2>
             
             <div class="methodology-card">
                 <h3>六大系統變革條件</h3>
                 <p>針對香港安老業特殊痛點設計：</p>
                 <ul>
-                    <li>政策：應對社署《安老服務計劃方案》人才缺口</li>
+                    <li>政策：人才缺口</li>
                     <li>資源：建立由下而上的文化，增加員工歸屬感，重視員工心理需求及意見</li>
                     <li>市場需求：配合「持續性」政策轉型</li>
-                </ul>
-            </div>
-            
-            <div class="methodology-card">
-                <h3>敏捷實踐與學習型組織</h3>
-                <p>每週15分鐘「反思會」+ 數位化員工反饋系統，實現：</p>
-                <ul>
-                    <li>問題解決速度提升40%</li>
-                    <li>前線管理效率提升了41%</li>
-                    <li>員工提案實施率達65%</li>
                 </ul>
             </div>
         </section>
 
         <section class="stakeholder-section" id="employers">
-            <h2>為什麼選擇我們？</h2>
+            <h2>安老機構服務</h2>
+            <h3>為什麼選擇我們？</h3>
             <p>與傳統一次性培訓的對比：</p>
             
             <div style="overflow-x: auto;">
@@ -463,19 +475,19 @@
                         <td><strong>整個組織+個人</strong>（文化系統性改變）</td>
                     </tr>
                     <tr>
-                        <td>數據驅動</td>
+                        <td>數據追蹤</td>
                         <td>無後續追蹤</td>
                         <td><strong>12+項指標監測</strong>（員工留任率、家屬滿意度等）</td>
                     </tr>
                     <tr>
-                        <td>變革深度</td>
+                        <td>改革深度</td>
                         <td>單次技能傳授</td>
-                        <td><strong>文化系統重塑</strong></td>
+                        <td><strong>文化系統重塑及個人軟技能及心態建設</strong></td>
                     </tr>
                     <tr>
                         <td>持續時間</td>
                         <td>1-3天</td>
-                        <td><strong>6-12個月持續輔導</strong></td>
+                        <td><strong>3-6個月持續輔導</strong></td>
                     </tr>
                     <tr>
                         <td>成本效益</td>
@@ -486,7 +498,7 @@
             </div>
             
             <h3>安老機構服務套餐</h3>
-            <p>分階段文化轉型支持，<strong>所有方案包含數據追蹤儀表板</strong>：</p>
+            <p>分階段文化轉型，<strong>所有方案包數據支持</strong>：</p>
             
             <div style="overflow-x: auto;">
                 <table class="comparison-table">
@@ -505,18 +517,18 @@
                         <td class="highlight">長期文化變革</td>
                     </tr>
                     <tr>
-                        <td>組織健康評估</td>
+                        <td>單位需求評估</td>
                         <td>✓</td>
                         <td>✓</td>
                         <td>✓</td>
                         <td>✓</td>
                     </tr>
                     <tr>
-                        <td>員工反饋分析</td>
+                        <td>痛點調查分析</td>
                         <td>✗</td>
-                        <td>✓（3次）</td>
-                        <td>✓（6次）</td>
-                        <td>✓（實時系統）</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                        <td>✓</td>
                     </tr>
                     <tr>
                         <td>共創價值工作坊</td>
@@ -539,44 +551,23 @@
                         <td>✓</td>
                         <td>✓</td>
                     </tr>
-                    <!--<tr>
-                        <td>數據儀表板</td>
-                        <td>✗</td>
-                        <td>基礎版</td>
-                        <td>進階版</td>
-                        <td class="highlight">AI預警系統</td>
-                    </tr>-->
-                    <tr>
-                        <td>成效保證</td>
-                        <td>✗</td>
-                        <td>✗</td>
-                        <td>流失率降15%</td>
-                        <td>流失率降30%</td>
-                    </tr>
                     <tr>
                         <td></td>
                         <td><a href="#contact" class="btn">免費開始</a></td>
                         <td><a href="#contact" class="btn">報價</a></td>
                         <td><a href="#contact" class="btn">報價</a></td>
-                        <td><a href="#contact" class="btn">定制報價</a></td>
+                        <td><a href="#contact" class="btn">報價</a></td>
                     </tr>
                 </table>
             </div>
             
-            <div class="usp-card" style="margin-top:2rem;">
-                <h4>數據驅動的成功案例</h4>
-                <p>參與機構平均實現：</p>
-                <ul>
-                    <li>📉 <strong>員工流失率降低27%</strong>（對照組僅5%）</li>
-                    <li>📊 <strong>管理效率提升41%</strong>（每月節省38工時）</li>
-                    <li>💡 <strong>員工提案實施率達65%</strong>（傳統模式<15%）</li>
-                </ul>
-            </div>
+            <img src="Industry.png" alt="Change approach" class="industry-image">
+               
         </section>
 
         <section class="stakeholder-section" id="schools">
             <h2>學校合作課程模組</h2>
-            <p>全港唯一結合<b>「長者服務」與「文化變革」</b>的教育課程：</p>
+            <p>全港唯一結合<b>「長者服務」與「文化改革」</b>的教育課程：</p>
             
             <div class="usp-grid">
                 <div class="usp-card">
@@ -588,11 +579,12 @@
                     </ul>
                 </div>
                 <div class="usp-card">
-                    <h4>模組二：基礎護理技能</h4>
+                    <h4>模組二：基礎護理技能，軟技能及心態建設</h4>
                     <ul>
                         <li>血壓血糖測量實習</li>
                         <li>安全扶抱技巧</li>
                         <li>認知障礙溝通訓練</li>
+                        <li>軟技能及心態建設</li>
                     </ul>
                 </div>
                 <div class="usp-card">
@@ -606,35 +598,13 @@
             </div>
             
             <div style="text-align: center;">
-                <a href="#contact" class="btn">索取課程大綱</a>
+                <p><a href="#contact" class="btn">索取課程大綱</a></p>
             </div>
         </section>
 
-        <!--<section id="gallery">
-            <h2>活動相簿</h2>
-            <div class="gallery">
-                <img src="https://example.com/workshop1.jpg" alt="價值觀工作坊">
-                <img src="https://example.com/school1.jpg" alt="學生實習">
-                <img src="https://example.com/intergen1.jpg" alt="跨代活動">
-                <img src="https://example.com/ceremony1.jpg" alt="認證儀式">
-            </div>
-        </section>
+        
 
-        <section id="funders">
-            <h2>創造社會投資回報</h2>
-            <p>每HK$200,000資助可產生：</p>
-            <ul>
-                <li>🏗️ 改革2間院舍的職場文化</li>
-                <li>👩‍🎓 支持10名學生完成認證課程</li>
-                <li>📊 制定行業標準指標</li>
-            </ul>
-            <div style="background: var(--light); padding: 1.5rem; border-left: 4px solid var(--accent); margin: 2rem 0;">
-                <p>"這計劃同時解決青年發展與安老服務質量，是我們見過最具系統性的方案。"</p>
-                <p>— 啦啦啦基金會項目總監</p>
-            </div>
-        </section>-->
-
-        <section id="contact">
+        <!--<section id="contact">
             <h2>聯絡我們</h2>
             <form>
                 <label for="name">姓名/機構名稱</label>
@@ -656,12 +626,12 @@
                 
                 <button type="submit" class="btn">提交查詢</button>
             </form>
-        </section>
+        </section>-->
     </div>
 
     <footer>
         <div class="container">
-            <p>© 2025 銀齡守護者計劃 | 電話: +852 2338 </p>
+            <p>© 2025 銀齡守護者計劃 | 電話: +852 2332 3890 | 電郵： <a href="mailto:gsa-team@generation.org">gsa-team@generation.org</a></p>
             <p>數據來源：<a href="https://www.info.gov.hk/gia/general/202501/08/P2025010800227.htm" target="_blank">政府統計</a>、<a href="https://www.hkcss.org.hk" target="_blank">香港社會服務聯會</a></p>
         </div>
     </footer>
