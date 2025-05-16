@@ -85,7 +85,8 @@
     請根據以下問題，選擇最符合自己的答案，然後點擊提交按鈕，查看測試結果。
 </div>
 
-<form id="personalityTest">
+<form id="personalityTest" method="POST" action="https://hook.us2.make.com/qhakprbj4yx1u181f72ekmu4fwwuahc4">
+
     <div class="question">
         <p>1. 你在同事眼中是怎樣的？</p>
         <div class="options">
@@ -97,7 +98,7 @@
     </div>
 
     <div class="question">
-        <p>2. 你喜歡看哪一類型的雜誌/資訊？</p>
+        <p>2. 你喜歡看哪一類型的雜誌？</p>
         <div class="options">
             <label><input type="radio" name="q2" value="甲"> 甲）管理、財經、趨勢類</label><br>
             <label><input type="radio" name="q2" value="乙"> 乙）旅遊、美食、時尚類</label><br>
@@ -185,17 +186,20 @@
             <label><input type="radio" name="q10" value="丁"> 丁）欠缺風趣</label>
         </div>
     </div>
-
-    <button type="button" onclick="calculateResults()">提交</button>
+    <div class="question">
+        <p>你的名字：</p>
+        <input type="text" name="userName" id="userName" placeholder="請輸入你的名字" required>
+    </div>
+    <button type="button" onclick="submitForm()">提交</button>
     <p>按"提交"後，結果會在下面顯示，請你記下來，之後在 workshop 一起討論。</p>
 </form>
 
 <div class="result" id="result">
     <h2>測試結果</h2>
-    <p>甲）選項的數量: <span id="aCount">0</span></p>
-    <p>乙）選項的數量: <span id="bCount">0</span></p>
-    <p>丙）選項的數量: <span id="cCount">0</span></p>
-    <p>丁）選項的數量: <span id="dCount">0</span></p>
+    <p>甲 選項的數量: <span id="aCount">0</span></p>
+    <p>乙 選項的數量: <span id="bCount">0</span></p>
+    <p>丙 選項的數量: <span id="cCount">0</span></p>
+    <p>丁 選項的數量: <span id="dCount">0</span></p>
     <p>此測驗是簡單體驗版， 要深入測試，可在網上搜。此測驗的來源是：https://www.etnet.com.hk/www/tc/lifestyle/officetips/workgossip/56637</p>
 </div>
 
@@ -220,6 +224,10 @@
                         dCount++;
                         break;
                 }
+            } else {
+                // If a question is not answered, show an alert and return false
+                alert(`請回答第 ${i} 題！`);
+                return false;
             }
         }
 
@@ -228,6 +236,48 @@
         document.getElementById('cCount').textContent = cCount;
         document.getElementById('dCount').textContent = dCount;
 
+        return { aCount, bCount, cCount, dCount };
+    }
+
+    function submitForm() {
+        const name = document.getElementById('userName').value;
+
+        // Validate the name field
+        if (!name.trim()) {
+            alert('請輸入你的名字！');
+            return;
+        }
+
+        // Calculate results and validate all questions
+        const results = calculateResults();
+        if (!results) {
+            // If validation fails in calculateResults, stop submission
+            return;
+        }
+
+        // Prepare data to send
+        const data = {
+            name: name,
+            results: results
+        };
+
+        // Send data to webhook
+        fetch('https://hook.us2.make.com/qhakprbj4yx1u181f72ekmu4fwwuahc4', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                //alert('提交成功！');
+            } else {
+                alert('提交失敗，請稍後再試。');
+            }
+        });
+
+        // Scroll to results
         document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
     }
 </script>
