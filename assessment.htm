@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -180,19 +181,19 @@
             results.supportGuidance = document.querySelector('input[name="supportGuidance"]:checked').value === "yes";
 
             let solutionSet = new Set();
-            if (results.visionValues) {
+            if (!results.visionValues) {
                 solutionSet.add("信任與透明文化（價值屋）");
             }
-            if (results.empathy) {
+            if (!results.empathy) {
                 solutionSet.add("信任與透明文化（價值屋）");
             }
-            if (results.communication || results.supportGuidance || results.trainingSupport) {
+            if (!results.communication || !results.supportGuidance || !results.trainingSupport) {
                 solutionSet.add("反思與反饋文化（行為心態技巧、反饋機制）");
             }
-            if (results.elderCareSOP) {
+            if (!results.elderCareSOP) {
                 solutionSet.add("價值觀為核心同理文化（價值為本SOP）");
             }
-            if (results.empowerment || results.feedback) {
+            if (!results.empowerment || !results.feedback) {
                 solutionSet.add("反思與反饋文化（行為心態技巧、反饋機制）");
             }
 
