@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badger App: Gamified Change Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4e54c8;
+            --secondary: #8f94fb;
+            --accent: #ff6b6b;
+            --success: #1dd1a1;
+            --warning: #feca57;
+            --dark: #222f3e;
+            --light: #f5f6fa;
+            --card-bg: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 25px;
+            color: white;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo i {
+            color: var(--warning);
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent), var(--warning));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .points {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 20px var(--shadow);
+            margin-bottom: 25px;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .mckinsey-blocks {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .block {
+            background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 5px solid;
+            transition: transform 0.3s ease;
+        }
+        
+        .block:hover {
+            transform: translateY(-5px);
+        }
+        
+        .block-1 { border-color: var(--primary); }
+        .block-2 { border-color: var(--success); }
+        .block-3 { border-color: var(--accent); }
+        .block-4 { border-color: var(--warning); }
+        
+        .block-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tasks {
+            margin-top: 15px;
+        }
+        
+        .task {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .task-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .task-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .task-details h4 {
+            margin-bottom: 4px;
+        }
+        
+        .task-details p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        .btn {
+            padding: 8px 20px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+        
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .badge {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f6d365, #fda085);
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .badge i {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .badge.locked {
+            background: linear-gradient(135deg, #cccccc, #999999);
+        }
+        
+        .badge.new::after {
+            content: "NEW!";
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--accent);
+            color: white;
+            font-size: 0.6rem;
+            padding: 3px 8px;
+            border-radius: 10px;
+        }
+        
+        .leaderboard {
+            margin-top: 15px;
+        }
+        
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            background: var(--light);
+        }
+        
+        .rank {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .rank-1 { background: var(--warning); }
+        .rank-2 { background: var(--success); }
+        .rank-3 { background: var(--primary); }
+        
+        .leaderboard-user {
+            flex: 1;
+        }
+        
+        .progress-container {
+            background: #e0e0e0;
+            border-radius: 5px;
+            height: 8px;
+            width: 100%;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--success);
+            border-radius: 5px;
+        }
+        
+        .progress-text {
+            font-size: 0.8rem;
+            color: #666;
+            text-align: right;
+            margin-top: 3px;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transform: translateX(120%);
+            transition: transform 0.5s ease;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--success);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .notification-content h3 {
+            margin-bottom: 5px;
+        }
+        
+        .notification-content p {
+            color: #666;
+        }
+        
+        .change-city {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 15px;
+            padding: 20px;
+            color: white;
+            margin-top: 20px;
+        }
+        
+        .city-progress {
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .city-fill {
+            height: 100%;
+            background: var(--warning);
+            width: 45%;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .city-stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .mckinsey-blocks {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-paw"></i>
+                <span>Badger App</span>
+            </div>
+            <div class="user-info">
+                <div class="points">
+                    <i class="fas fa-coins"></i>
+                    <span id="points">1,250</span>
+                </div>
+                <div class="avatar">
+                    JD
+                </div>
+            </div>
+        </header>
+        
+        <div class="dashboard">
+            <div class="main-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Change Management Quest</h2>
+                        <div>Week 3 of 8</div>
+                    </div>
+                    
+                    <div class="change-city">
+                        <h3>Building Our Future City</h3>
+                        <p>Complete tasks to grow our organization's future state</p>
+                        <div class="city-progress">
+                            <div class="city-fill">45% Complete</div>
+                        </div>
+                        <div class="city-stats">
+                            <div>
+                                <div class="stat-value">73%</div>
+                                <div class="stat-label">Participation</div>
+                            </div>
+                            <div>
+                                <div class="stat-value">58</div>
+                                <div class="stat-label">Badges Earned</div>
+                            </div>
+                            <div>
+                                <div class="stat-value">24</div>
+                                <div class="stat-label">Change Champions</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin: 25px 0 15px; color: var(--primary);">Weekly Tasks</h3>
+                    <p style="margin-bottom: 20px; color: #666;">Complete tasks to earn Badgers and build our future organization!</p>
+                    
+                    <div class="mckinsey-blocks">
+                        <div class="block block-1">
+                            <div class="block-title">
+                                <i class="fas fa-user-tie"></i>
+                                Role Modeling
+                            </div>
+                            <p>Leadership visibility and behavior</p>
+                            
+                            <div class="tasks">
+                                <div class="task">
+                                    <div class="task-info">
+                                        <div class="task-icon" style="background: var(--primary);">
+                                            <i class="fas fa-eye"></i>
+                                        </div>
+                                        <div class="task-details">
+                                            <h4>Shadow a Leader</h4>
+                                            <p>Attend a leadership meeting implementing change</p>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" onclick="completeTask(this, 'Leadership Observer')">Complete</button>
+                                </div>
+                                
+                                <div class="task">
+                                    <div class="task-info">
+                                        <div class="task-icon" style="background: var(--primary);">
+                                            <i class="fas fa-share-alt"></i>
+                                        </div>
+                                        <div class="task-details">
+                                            <h4>Share Your Story</h4>
+                                            <p>Post about a positive change experience</p>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" onclick="completeTask(this, 'Storyteller')">Complete</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="block block-2">
+                            <div class="block-title">
+                                <i class="fas fa-lightbulb"></i>
+                                Fostering Understanding
+                            </div>
+                            <p>Communicating the "why" of change</p>
+                            
+                            <div class="tasks">
+                                <div class="task">
+                                    <div class="task-info">
+                                        <div class="task-icon" style="background: var(--success);">
+                                            <i class="fas fa-search"></i>
+                                        </div>
+                                        <div class="task-details">
+                                            <h4>Why Change? Hunt</h4>
+                                            <p>Find key information about the change initiative</p>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" onclick="completeTask(this, 'Change Detective')">Complete</button>
+                                </div>
+                                
+                                <div class="task">
+                                    <div class="task-info">
+                                        <div class="task-icon" style="background: var(--success);">
+                                            <i class="fas fa-times-circle"></i>
+                                        </div>
+                                        <div class="task-details">
+                                            <h4>Mythbuster Challenge</h4>
+                                            <p>Debunk one common misconception</p>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" onclick="completeTask(this, 'Mythbuster')">Complete</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="block block-3">
+                            <div class="block-title">
+                                <i class="fas fa-graduation-cap"></i>
+                                Talent & Skills
+                            </div>
+                            <p>Building capabilities for change</p>
+                            
+                            <div class="tasks">
+                                <div class="task">
+                                    <div class="task-info">
+                                        <div class="task-icon" style="background: var(--accent);">
+                                            <i class="fas fa-laptop"></i>
+                                        </div>
+                                        <div class="task-details">
+                                            <h4>CRM Simulation</h4>
+                                            <p>Complete the new CRM training simulation</p>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" onclick="completeTask(this, 'CRM Master')">Complete</button>
+                                </div>
+                                
+                                <div class="task">
+                                    <div class="task-info">
+                                        <div class="task-icon" style="background: var(--accent);">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <div class="task-details">
+                                            <h4>Peer Coaching</h4>
+                                            <p>Help a colleague learn a new skill</p>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" onclick="completeTask(this, 'Team Coach')">Complete</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="block block-4">
+                            <div class="block-title">
+                                <i class="fas fa-trophy"></i>
+                                Reinforcing Mechanisms
+                            </div>
+                            <p>Recognition and reward systems</p>
+                            
+                            <div class="tasks">
+                                <div class="task">
+                                    <div class="task-info">
+                                        <div class="task-icon" style="background: var(--warning);">
+                                            <i class="fas fa-hands-helping"></i>
+                                        </div>
+                                        <div class="task-details">
+                                            <h4>Peer Recognition</h4>
+                                            <p>Nominate a colleague who embraced change</p>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" onclick="completeTask(this, 'Recognizer')">Complete</button>
+                                </div>
+                                
+                                <div class="task">
+                                    <div class="task-info">
+                                        <div class="task-icon" style="background: var(--warning);">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <div class="task-details">
+                                            <h4>Impact Logger</h4>
+                                            <p>Document a positive change outcome</p>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" onclick="completeTask(this, 'Impact Tracker')">Complete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Your Badgers</h3>
+                        <span id="badge-count">6/24</span>
+                    </div>
+                    
+                    <div class="badge-container">
+                        <div class="badge">
+                            <i class="fas fa-star"></i>
+                            <span>Early Adopter</span>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-comments"></i>
+                            <span>Feedback Pro</span>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-book"></i>
+                            <span>Quick Learner</span>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-users"></i>
+                            <span>Team Player</span>
+                        </div>
+                        <div class="badge locked">
+                            <i class="fas fa-lock"></i>
+                            <span>Change Leader</span>
+                        </div>
+                        <div class="badge locked">
+                            <i class="fas fa-lock"></i>
+                            <span>Innovator</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Change Champions</h3>
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    
+                    <div class="leaderboard">
+                        <div class="leaderboard-item">
+                            <div class="rank rank-1">1</div>
+                            <div class="leaderboard-user">
+                                <div>Sarah Johnson</div>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 92%"></div>
+                                </div>
+                                <div class="progress-text">920 points</div>
+                            </div>
+                        </div>
+                        
+                        <div class="leaderboard-item">
+                            <div class="rank rank-2">2</div>
+                            <div class="leaderboard-user">
+                                <div>Michael Chen</div>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 85%"></div>
+                                </div>
+                                <div class="progress-text">850 points</div>
+                            </div>
+                        </div>
+                        
+                        <div class="leaderboard-item">
+                            <div class="rank rank-3">3</div>
+                            <div class="leaderboard-user">
+                                <div>You</div>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 78%"></div>
+                                </div>
+                                <div class="progress-text">780 points</div>
+                            </div>
+                        </div>
+                        
+                        <div class="leaderboard-item">
+                            <div class="rank">4</div>
+                            <div class="leaderboard-user">
+                                <div>Emma Rodriguez</div>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 75%"></div>
+                                </div>
+                                <div class="progress-text">750 points</div>
+                            </div>
+                        </div>
+                        
+                        <div class="leaderboard-item">
+                            <div class="rank">5</div>
+                            <div class="leaderboard-user">
+                                <div>David Kim</div>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 68%"></div>
+                                </div>
+                                <div class="progress-text">680 points</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Rewards Center</h3>
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    
+                    <div style="margin-top: 15px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <div>
+                                <i class="fas fa-coffee" style="color: var(--warning);"></i>
+                                <span>Coffee Voucher</span>
+                            </div>
+                            <button class="btn btn-success" style="padding: 5px 10px;">150 pts</button>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <div>
+                                <i class="fas fa-ticket-alt" style="color: var(--accent);"></i>
+                                <span>Conference Pass</span>
+                            </div>
+                            <button class="btn btn-success" style="padding: 5px 10px;">800 pts</button>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <div>
+                                <i class="fas fa-umbrella-beach" style="color: var(--success);"></i>
+                                <span>Extra PTO Day</span>
+                            </div>
+                            <button class="btn btn-success" style="padding: 5px 10px;">1200 pts</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">
+        <div class="notification-icon">
+            <i class="fas fa-trophy"></i>
+        </div>
+        <div class="notification-content">
+            <h3>Badge Earned!</h3>
+            <p>You've earned the <span id="badge-name">Leadership Observer</span> badge</p>
+        </div>
+    </div>
+    
+    <script>
+        // Points system
+        let points = 1250;
+        let badgesEarned = 6;
+        
+        // Function to complete a task
+        function completeTask(button, badgeName) {
+            // Disable the button
+            button.disabled = true;
+            button.textContent = "Completed!";
+            button.classList.remove("btn-primary");
+            button.classList.add("btn-success");
+            
+            // Add points
+            points += 50;
+            document.getElementById('points').textContent = points.toLocaleString();
+            
+            // Earn a badge (if applicable)
+            if (badgeName) {
+                badgesEarned++;
+                document.getElementById('badge-count').textContent = badgesEarned + '/24';
+                showNotification(badgeName);
+            }
+            
+            // Update progress
+            updateProgress();
+        }
+        
+        // Function to show notification
+        function showNotification(badgeName) {
+            const notification = document.getElementById('notification');
+            const badgeNameElement = document.getElementById('badge-name');
+            
+            badgeNameElement.textContent = badgeName;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Function to update progress
+        function updateProgress() {
+            // In a real app, this would calculate based on actual progress
+            const progress = Math.min(45 + Math.floor(Math.random() * 10), 100);
+            document.querySelector('.city-fill').style.width = progress + '%';
+            document.querySelector('.city-fill').textContent = progress + '% Complete';
+            
+            // Update user's position in leaderboard
+            const userPoints = Math.min(780 + Math.floor(Math.random() * 50), 920);
+            document.querySelector('.leaderboard-item:nth-child(3) .progress-bar').style.width = 
+                Math.min(userPoints/10, 92) + '%';
+            document.querySelector('.leaderboard-item:nth-child(3) .progress-text').textContent = 
+                userPoints + ' points';
+        }
+        
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add a locked badge that will unlock when user completes all tasks
+            const lockedBadges = document.querySelectorAll('.badge.locked');
+            lockedBadges.forEach(badge => {
+                badge.addEventListener('click', function() {
+                    alert("Complete more tasks to unlock this badge!");
+                });
+            });
+        });
+    </script>
+</body>
+</html>
