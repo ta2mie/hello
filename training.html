@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSA Change Quest - Training Roster</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen font-sans">
+
+    <!-- Top Navigation Bar -->
+    <nav class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <a href="dashboard.html" class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-emerald-500 rounded-xl flex items-center justify-center text-white font-bold shadow-lg hover:opacity-90 transition">
+                        <i class="fa-solid fa-mountain-sun"></i>
+                    </a>
+                    <div>
+                        <span class="font-bold text-lg text-white">銀齡守護者 GSA</span>
+                        <span class="text-xs bg-indigo-500/20 text-indigo-400 px-2 py-0.5 rounded-full ml-2 border border-indigo-500/30">培訓名單與進度</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="dashboard.html" class="text-xs text-slate-400 hover:text-white flex items-center gap-1.5 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-700">
+                        <i class="fa-solid fa-arrow-left"></i> Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- Stage Capacity Overview Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-8">
+            <div class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-center">
+                <div class="text-[10px] uppercase font-semibold text-slate-400">痛點問卷</div>
+                <div class="text-lg font-bold text-indigo-400 mt-1">20 / 30</div>
+                <div class="text-[10px] text-slate-400">Max 30人</div>
+            </div>
+            <div class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-center">
+                <div class="text-[10px] uppercase font-semibold text-slate-400">痛點訪問</div>
+                <div class="text-lg font-bold text-indigo-400 mt-1">12 / 20</div>
+                <div class="text-[10px] text-slate-400">Max 20人</div>
+            </div>
+            <div class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-center">
+                <div class="text-[10px] uppercase font-semibold text-slate-400">主管文化培訓</div>
+                <div class="text-lg font-bold text-emerald-400 mt-1">8 / 10</div>
+                <div class="text-[10px] text-slate-400">Max 10人</div>
+            </div>
+            <div class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-center">
+                <div class="text-[10px] uppercase font-semibold text-slate-400">共建價值屋</div>
+                <div class="text-lg font-bold text-emerald-400 mt-1">6 / 8</div>
+                <div class="text-[10px] text-slate-400">Max 8人</div>
+            </div>
+            <div class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-center">
+                <div class="text-[10px] uppercase font-semibold text-slate-400">BSM 軟技能培訓</div>
+                <div class="text-lg font-bold text-amber-400 mt-1">15 / 20</div>
+                <div class="text-[10px] text-slate-400">20人層級</div>
+            </div>
+            <div class="bg-slate-800 border border-slate-700 p-4 rounded-xl text-center">
+                <div class="text-[10px] uppercase font-semibold text-slate-400">在職實踐</div>
+                <div class="text-lg font-bold text-rose-400 mt-1">5 / 10</div>
+                <div class="text-[10px] text-slate-400">4個月實踐</div>
+            </div>
+        </div>
+
+        <!-- Training Roster Table Section -->
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-xl">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div>
+                    <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-users text-indigo-400"></i> 培訓參與人員名單 & Checklist
+                    </h2>
+                    <p class="text-xs text-slate-400 mt-0.5">Track individual staff progress across 6 training stages</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" placeholder="Search staff..." class="bg-slate-900 border border-slate-700 text-xs text-slate-200 px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                    <button class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold px-3 py-2 rounded-lg transition">+ Add Staff</button>
+                </div>
+            </div>
+
+            <!-- Responsive Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-slate-700 text-[11px] text-slate-400 uppercase tracking-wider bg-slate-900/50">
+                            <th class="p-3">Staff Name</th>
+                            <th class="p-3">Role / 職位</th>
+                            <th class="p-3">Team / 隊名</th>
+                            <th class="p-3 text-center">痛點問卷</th>
+                            <th class="p-3 text-center">痛點訪問</th>
+                            <th class="p-3 text-center">主管培訓</th>
+                            <th class="p-3 text-center">價值屋共建</th>
+                            <th class="p-3 text-center">BSM 軟技能</th>
+                            <th class="p-3 text-center">在職實踐</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700/60 text-xs">
+                        
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-slate-700/30 transition">
+                            <td class="p-3 font-semibold text-slate-200">鄧院長</td>
+                            <td class="p-3 text-indigo-400 font-medium">院長</td>
+                            <td class="p-3 text-slate-400">管理層</td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-minus text-slate-600 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-spinner text-amber-400 animate-spin text-sm"></i></td>
+                        </tr>
+
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-slate-700/30 transition">
+                            <td class="p-3 font-semibold text-slate-200">張副院長</td>
+                            <td class="p-3 text-indigo-400 font-medium">副院長</td>
+                            <td class="p-3 text-slate-400">管理層</td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-spinner text-amber-400 animate-spin text-sm"></i></td>
+                        </tr>
+
+                        <!-- Row 3 -->
+                        <tr class="hover:bg-slate-700/30 transition">
+                            <td class="p-3 font-semibold text-slate-200">陳RN</td>
+                            <td class="p-3 text-amber-400 font-medium">RN (註冊護士)</td>
+                            <td class="p-3 text-slate-400">護理組 A</td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-minus text-slate-600 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-xmark text-slate-600 text-sm"></i></td>
+                        </tr>
+
+                        <!-- Row 4 -->
+                        <tr class="hover:bg-slate-700/30 transition">
+                            <td class="p-3 font-semibold text-slate-200">李保健員</td>
+                            <td class="p-3 text-rose-400 font-medium">前線 HW</td>
+                            <td class="p-3 text-slate-400">護理組 B</td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-xmark text-slate-600 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-minus text-slate-600 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-minus text-slate-600 text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-spinner text-amber-400 animate-spin text-sm"></i></td>
+                            <td class="p-3 text-center"><i class="fa-solid fa-circle-xmark text-slate-600 text-sm"></i></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Legend & Footer Note -->
+            <div class="mt-6 pt-4 border-t border-slate-700 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400">
+                <div class="flex items-center gap-4">
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-400"></i> Completed</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-spinner text-amber-400"></i> In Progress</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-minus text-slate-600"></i> Not Applicable</span>
+                </div>
+                <div>Note: BSM 軟技能培訓 屬於 20人 層級</div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
