@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GSA Journey Portal</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI, sans-serif;
+    background:#f5f7fb;
+    color:#333;
+}
+
+.header{
+    background:white;
+    padding:20px 40px;
+    border-bottom:1px solid #ddd;
+}
+
+.header h1{
+    font-size:28px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:30px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.card h2{
+    margin-bottom:15px;
+}
+
+.progress-bar{
+    height:14px;
+    background:#eee;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    width:35%;
+    height:100%;
+    background:#4caf50;
+}
+
+.journey{
+    display:flex;
+    justify-content:space-between;
+    margin-top:25px;
+}
+
+.step{
+    text-align:center;
+    flex:1;
+}
+
+.circle{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    margin:auto;
+    line-height:45px;
+    color:white;
+    font-weight:bold;
+}
+
+.completed{
+    background:#22c55e;
+}
+
+.current{
+    background:#f59e0b;
+}
+
+.pending{
+    background:#d1d5db;
+}
+
+.todo{
+    list-style:none;
+}
+
+.todo li{
+    padding:10px 0;
+    border-bottom:1px solid #eee;
+}
+
+.button{
+    background:#2563eb;
+    color:white;
+    padding:10px 18px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>ABC Care Home</h1>
+    <p>銀齡守護者轉型旅程</p>
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Overall Progress</h2>
+
+<div class="progress-bar">
+<div class="progress-fill"></div>
+</div>
+
+<p style="margin-top:10px">35% Completed</p>
+
+<div class="journey">
+
+<div class="step">
+<div class="circle completed">✓</div>
+<p>Expectation</p>
+</div>
+
+<div class="step">
+<div class="circle completed">✓</div>
+<p>Kick-off</p>
+</div>
+
+<div class="step">
+<div class="circle current">3</div>
+<p>Painpoint</p>
+</div>
+
+<div class="step">
+<div class="circle pending">4</div>
+<p>Results</p>
+</div>
+
+<div class="step">
+<div class="circle pending">5</div>
+<p>Workshop</p>
+</div>
+
+<div class="step">
+<div class="circle pending">6</div>
+<p>Intervention</p>
+</div>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="grid">
+
+<div>
+
+<div class="card">
+
+<h2>Current Phase</h2>
+
+<h3>Painpoint Analysis</h3>
+
+<p>
+We are currently collecting staff feedback through
+surveys and interviews.
+</p>
+
+<br>
+
+<button class="button">
+View Activity Details
+</button>
+
+</div>
+
+<br>
+
+<div class="card">
+
+<h2>Upcoming Session</h2>
+
+<p><strong>Painpoint Result Sharing</strong></p>
+
+<p>25 Sept 2026</p>
+
+<p>2:00 PM - 3:30 PM</p>
+
+<p>Participants Confirmed: 17 / 20</p>
+
+<button class="button">
+View Preparation
+</button>
+
+</div>
+
+</div>
+
+<div>
+
+<div class="card">
+
+<h2>My Actions</h2>
+
+<ul class="todo">
+
+<li>
+☐ Submit remaining staff list
+</li>
+
+<li>
+☐ Confirm interview schedules
+</li>
+
+<li>
+☐ Review project expectations
+</li>
+
+<li>
+☐ Prepare potential change team
+</li>
+
+</ul>
+
+</div>
+
+<br>
+
+<div class="card">
+
+<h2>Quick Links</h2>
+
+<p>📄 Expectations</p>
+<p>👥 Participants</p>
+<p>📅 Timeline</p>
+<p>📊 Progress</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
