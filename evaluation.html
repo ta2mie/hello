@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSA Change Quest - 6 Conditions Evaluation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen font-sans">
+
+    <!-- Top Navigation Bar -->
+    <nav class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <a href="dashboard.html" class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-emerald-500 rounded-xl flex items-center justify-center text-white font-bold shadow-lg hover:opacity-90 transition">
+                        <i class="fa-solid fa-mountain-sun"></i>
+                    </a>
+                    <div>
+                        <span class="font-bold text-lg text-white">銀齡守護者 GSA</span>
+                        <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full ml-2 border border-emerald-500/30">2.1 目標評估 (系統改變的六大條件)</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="dashboard.html" class="text-xs text-slate-400 hover:text-white flex items-center gap-1.5 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-700">
+                        <i class="fa-solid fa-arrow-left"></i> Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- Overview Header Card -->
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 mb-8 shadow-xl">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div>
+                    <h1 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-traffic-light text-emerald-400"></i>
+                        單位目標評估 (Systems Change Tracker)
+                    </h1>
+                    <p class="text-xs text-slate-300 mt-2 max-w-3xl leading-relaxed">
+                        本表格基於「系統改變的六大條件」（政策、心智模式、關係與連結、實踐、資源、權力動態），幫助單位評估現狀、設定目標和監控轉型進度。
+                    </p>
+                </div>
+                <!-- Traffic Light Status Summary -->
+                <div class="flex items-center gap-3 bg-slate-900 p-4 rounded-xl border border-slate-700">
+                    <div class="text-center px-3 border-r border-slate-700">
+                        <div class="flex items-center justify-center gap-1 text-emerald-400 font-bold text-lg">
+                            <i class="fa-solid fa-circle text-xs"></i> 6
+                        </div>
+                        <div class="text-[10px] text-slate-400 uppercase">進步 (Green)</div>
+                    </div>
+                    <div class="text-center px-3 border-r border-slate-700">
+                        <div class="flex items-center justify-center gap-1 text-amber-400 font-bold text-lg">
+                            <i class="fa-solid fa-circle text-xs"></i> 3
+                        </div>
+                        <div class="text-[10px] text-slate-400 uppercase">不變 (Yellow)</div>
+                    </div>
+                    <div class="text-center px-3">
+                        <div class="flex items-center justify-center gap-1 text-rose-500 font-bold text-lg">
+                            <i class="fa-solid fa-circle text-xs"></i> 1
+                        </div>
+                        <div class="text-[10px] text-slate-400 uppercase">退步 (Red)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6 Conditions Assessment Table -->
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-xl">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h2 class="text-lg font-bold text-white">Monthly Progress & SMART Goals</h2>
+                    <p class="text-xs text-slate-400 mt-0.5">Updated monthly by Sub-Director and GSA team</p>
+                </div>
+                <button class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold px-4 py-2 rounded-lg transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-plus text-xs"></i> Log Monthly Insight
+                </button>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-slate-700 text-[11px] text-slate-400 uppercase tracking-wider bg-slate-900/50">
+                            <th class="p-3">Condition / 評估指標</th>
+                            <th class="p-3 text-center">Baseline Score</th>
+                            <th class="p-3 text-center">4-Month Goal</th>
+                            <th class="p-3 text-center">Status</th>
+                            <th class="p-3">Current Insight / 洞察</th>
+                            <th class="p-3">Next Step / 下一步</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700/60 text-xs">
+
+                        <!-- Item 1: Communication Mechanism -->
+                        <tr class="hover:bg-slate-700/30 transition">
+                            <td class="p-3 font-semibold text-slate-200">
+                                <div>1. 溝通機制與團隊文化</div>
+                                <div class="text-[10px] text-slate-400 font-normal">關係與連結 (Relationships & Connections)</div>
+                            </td>
+                            <td class="p-3 text-center text-slate-300 font-medium">1 / 4 (未達標)</td>
+                            <td class="p-3 text-center text-emerald-400 font-medium">3 / 4 (達標)</td>
+                            <td class="p-3 text-center">
+                                <span class="inline-flex items-center gap-1 text-[11px] font-bold text-rose-400 bg-rose-500/10 border border-rose-500/20 px-2 py-0.5 rounded-full">
+                                    <i class="fa-solid fa-circle text-[8px]"></i> 紅 (退步)
+                                </span>
+                            </td>
+                            <td class="p-3 text-slate-300">同事忘記出席跨部門例會，訊息傳遞出現斷層。</td>
+                            <td class="p-3 text-slate-300 font-medium">時間表已貼打卡鐘位置，請留意出席並於前一天提示。</td>
+                        </tr>
+
+                        <!-- Item 2: Mindset & Values -->
+                        <tr class="hover:bg-slate-700/30 transition">
+                            <td class="p-3 font-semibold text-slate-200">
+                                <div>2. 人本自立價值認同</div>
+                                <div class="text-[10px] text-slate-400 font-normal">心智模式 (Mental Models)</div>
+                            </td>
+                            <td class="p-3 text-center text-slate-300 font-medium">2 / 4 (發展中)</td>
+                            <td class="p-3 text-center text-emerald-400 font-medium">4 / 4 (卓越)</td>
+                            <td class="p-3 text-center">
+                                <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">
+                                    <i class="fa-solid fa-circle text-[8px]"></i> 綠 (進步)
+                                </span>
+                            </td>
+                            <td class="p-3 text-slate-300">主管完成「共建價值屋」後，主動於日常早會引用共通語言。</td>
+                            <td class="p-3 text-slate-300 font-medium">開展第二階段前線 BSM 軟技能培訓。</td>
+                        </tr>
+
+                        <!-- Item 3: Operational Workflows -->
+                        <tr class="hover:bg-slate-700/30 transition">
+                            <td class="p-3 font-semibold text-slate-200">
+                                <div>3. 價值為本工作流程落實</div>
+                                <div class="text-[10px] text-slate-400 font-normal">實踐 (Practices)</div>
+                            </td>
+                            <td class="p-3 text-center text-slate-300 font-medium">1 / 4 (未達標)</td>
+                            <td class="p-3 text-center text-emerald-400 font-medium">3 / 4 (達標)</td>
+                            <td class="p-3 text-center">
+                                <span class="inline-flex items-center gap-1 text-[11px] font-bold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full">
+                                    <i class="fa-solid fa-circle text-[8px]"></i> 黃 (不變)
+                                </span>
+                            </td>
+                            <td class="p-3 text-slate-300">沐浴與餐服流程已完成草案，但現場執行細節仍待複核。</td>
+                            <td class="p-3 text-slate-300 font-medium">鄧院長審批價值為本流程，並於下月開始試行。</td>
+                        </tr>
+
+                        <!-- Item 4: Leadership Support -->
+                        <tr class="hover:bg-slate-700/30 transition">
+                            <td class="p-3 font-semibold text-slate-200">
+                                <div>4. 領導層資源與授權</div>
+                                <div class="text-[10px] text-slate-400 font-normal">權力動態 & 資源 (Power Dynamics)</div>
+                            </td>
+                            <td class="p-3 text-center text-slate-300 font-medium">2 / 4 (發展中)</td>
+                            <td class="p-3 text-center text-emerald-400 font-medium">3 / 4 (達標)</td>
+                            <td class="p-3 text-center">
+                                <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">
+                                    <i class="fa-solid fa-circle text-[8px]"></i> 綠 (進步)
+                                </span>
+                            </td>
+                            <td class="p-3 text-slate-300">管理層已安排每週 1 小時作為團隊實踐與反思時間。</td>
+                            <td class="p-3 text-slate-300 font-medium">持續監察中層主管帶領反思會議之進度。</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Footer Legend -->
+            <div class="mt-6 pt-4 border-t border-slate-700 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400">
+                <div class="flex items-center gap-4">
+                    <span><strong>1:</strong> 未達標</span>
+                    <span><strong>2:</strong> 發展中</span>
+                    <span><strong>3:</strong> 達標</span>
+                    <span><strong>4:</strong> 卓越</span>
+                </div>
+                <div>GSA Systems Change Framework · Monthly Review</div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
