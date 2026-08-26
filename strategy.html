@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSA Change Quest - Strategy & Co-Creation Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen font-sans">
+
+    <!-- Top Navigation Bar -->
+    <nav class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <a href="dashboard.html" class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-emerald-500 rounded-xl flex items-center justify-center text-white font-bold shadow-lg hover:opacity-90 transition">
+                        <i class="fa-solid fa-mountain-sun"></i>
+                    </a>
+                    <div>
+                        <span class="font-bold text-lg text-white">銀齡守護者 GSA</span>
+                        <span class="text-xs bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded-full ml-2 border border-amber-500/30">Intervention Options & 共創成果</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="dashboard.html" class="text-xs text-slate-400 hover:text-white flex items-center gap-1.5 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-700">
+                        <i class="fa-solid fa-arrow-left"></i> Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        <!-- Section 1: Intervention Strategy Matrix -->
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-xl">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                <div>
+                    <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-chess-board text-amber-400"></i>
+                        改革選項與策略分析 (Intervention Options)
+                    </h2>
+                    <p class="text-xs text-slate-400 mt-1">針對人手短缺與中層管理現狀之應對策略</p>
+                </div>
+                <span class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1.5 rounded-xl font-medium self-start md:self-auto">
+                    Recommended: Option 3
+                </span>
+            </div>
+
+            <!-- Strategy Options Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-slate-700 text-[11px] text-slate-400 uppercase tracking-wider bg-slate-900/50">
+                            <th class="p-3 text-center">選項</th>
+                            <th class="p-3">方法 (Method)</th>
+                            <th class="p-3">複雜性 (Complexity)</th>
+                            <th class="p-3">改變效果 (Impact)</th>
+                            <th class="p-3">好處 (Pros)</th>
+                            <th class="p-3">壞處 (Cons)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700/60 text-xs">
+
+                        <!-- Option 1 -->
+                        <tr class="hover:bg-slate-700/30 transition">
+                            <td class="p-3 text-center font-bold text-slate-400">1</td>
+                            <td class="p-3 font-semibold text-slate-200">GSA 先招聘，後改革</td>
+                            <td class="p-3 text-amber-400 text-center">⭐⭐⭐⭐⭐</td>
+                            <td class="p-3 text-rose-400 text-center">♥️♥️♥️</td>
+                            <td class="p-3 text-slate-300">一步一步進行，不會增加大家負擔。</td>
+                            <td class="p-3 text-slate-400">時間拖長，現有情況仍會持續一段時間。</td>
+                        </tr>
+
+                        <!-- Option 2 -->
+                        <tr class="hover:bg-slate-700/30 transition">
+                            <td class="p-3 text-center font-bold text-slate-400">2</td>
+                            <td class="p-3 font-semibold text-slate-200">GSA 招聘及改革同時進行</td>
+                            <td class="p-3 text-amber-400 text-center">⭐⭐⭐⭐⭐</td>
+                            <td class="p-3 text-rose-400 text-center">♥️</td>
+                            <td class="p-3 text-slate-300">改革時間不變，同步開展痛點調查與招聘。</td>
+                            <td class="p-3 text-slate-400">高層需處理招聘與改革，專注力及人手易現混亂。</td>
+                        </tr>
+
+                        <!-- Option 3 (Recommended) -->
+                        <tr class="bg-indigo-950/30 border-2 border-indigo-500/50 hover:bg-indigo-950/50 transition">
+                            <td class="p-3 text-center font-bold text-indigo-400">
+                                3 <span class="block text-[9px] bg-indigo-500/20 text-indigo-300 px-1 py-0.5 rounded mt-0.5">建議</span>
+                            </td>
+                            <td class="p-3 font-semibold text-indigo-200">
+                                GSA 不參與招聘，只改革<br>
+                                <span class="text-[10px] font-normal text-slate-400">加重中層 Train-the-Trainer (TTT)</span>
+                            </td>
+                            <td class="p-3 text-amber-400 text-center">⭐⭐⭐</td>
+                            <td class="p-3 text-rose-400 text-center">♥️♥️♥️♥️♥️</td>
+                            <td class="p-3 text-indigo-100 font-medium">提升中層培訓能力及行為技能，先建立好單位價值及中層行為。</td>
+                            <td class="p-3 text-slate-400">前線培訓及工作實踐推遲。</td>
+                        </tr>
+
+                        <!-- Option 4 -->
+                        <tr class="hover:bg-slate-700/30 transition opacity-70">
+                            <td class="p-3 text-center font-bold text-slate-500">4</td>
+                            <td class="p-3 font-semibold text-slate-300">GSA 不參與招聘，原有計劃</td>
+                            <td class="p-3 text-amber-400 text-center">⭐</td>
+                            <td class="p-3 text-rose-400 text-center">♥️♥️</td>
+                            <td class="p-3 text-slate-400">不建議基本計劃</td>
+                            <td class="p-3 text-slate-400">不建議基本計劃</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 2: Co-Creation Upload & Deliverables Repository -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- Co-Creation Prep Form (3. 共創準備) -->
+            <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-xl">
+                <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-file-arrow-up text-indigo-400"></i>
+                    3. 共創工作坊準備 (Prep Documents)
+                </h3>
+                <p class="text-xs text-slate-400 mb-6">請單位高層提供以下資料予 GSA 團隊，以利準備工作坊內容：</p>
+
+                <form class="space-y-4 text-xs">
+                    <div>
+                        <label class="block font-semibold text-slate-300 mb-1">1. 單位願景、使命及價值觀</label>
+                        <textarea rows="3" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500" placeholder="輸入單位願景/使命..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-300 mb-1">2. 日常工作流程文件 (例如：沐浴、餐服、如廁)</label>
+                        <div class="border-2 border-dashed border-slate-700 rounded-xl p-4 text-center bg-slate-900/50 hover:bg-slate-900 transition cursor-pointer">
+                            <i class="fa-solid fa-cloud-arrow-up text-2xl text-slate-500 mb-2 block"></i>
+                            <span class="text-slate-400">Drag & drop SOP files or <span class="text-indigo-400 font-medium">browse</span></span>
+                            <span class="block text-[10px] text-slate-500 mt-1">PDF, DOCX up to 10MB</span>
+                        </div>
+                    </div>
+
+                    <button type="button" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2.5 rounded-xl transition">
+                        Submit Prep Materials
+                    </button>
+                </form>
+            </div>
+
+            <!-- Co-Creation Deliverables Output (5. 共創成果) -->
+            <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-base font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-house-flag text-emerald-400"></i>
+                            5. 共創成果 Repository
+                        </h3>
+                        <span class="text-[10px] bg-slate-700 text-slate-300 px-2 py-0.5 rounded">2 Files Approved</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-6">由高層及 GSA 審批通過之價值屋與價值為本工作流程</p>
+
+                    <div class="space-y-3">
+                        <!-- Output File 1 -->
+                        <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-3 flex items-center justify-between hover:border-emerald-500/50 transition">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-emerald-500/10 text-emerald-400 rounded-lg flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-semibold text-slate-200">GSA 單位價值屋 (Value House).pdf</div>
+                                    <div class="text-[10px] text-slate-400">Approved by 鄧院長 · 2.4 MB</div>
+                                </div>
+                            </div>
+                            <button class="text-xs text-indigo-400 hover:text-indigo-300 bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-700">View</button>
+                        </div>
+
+                        <!-- Output File 2 -->
+                        <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-3 flex items-center justify-between hover:border-emerald-500/50 transition">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-indigo-500/10 text-indigo-400 rounded-lg flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-diagram-project"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-semibold text-slate-200">價值為本工作流程 - 沐浴與餐服 SOP.pdf</div>
+                                    <div class="text-[10px] text-slate-400">Approved by 鄧院長 · 1.8 MB</div>
+                                </div>
+                            </div>
+                            <button class="text-xs text-indigo-400 hover:text-indigo-300 bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-700">View</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-slate-700 text-[11px] text-slate-500 text-center">
+                    銀齡守護者是起步點，透過文化系統建設，持續改進，抵達人本自立
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
