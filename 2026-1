@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSA Change Quest - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="max-w-md w-full bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl relative overflow-hidden">
+        <!-- Background Accent Glow -->
+        <div class="absolute -top-10 -right-10 w-32 h-32 bg-indigo-500 rounded-full blur-3xl opacity-20"></div>
+        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-emerald-500 rounded-full blur-3xl opacity-20"></div>
+
+        <!-- Header -->
+        <div class="text-center mb-8 relative z-10">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-500 to-emerald-500 rounded-2xl mb-4 shadow-lg">
+                <i class="fa-solid fa-mountain-sun text-2xl text-white"></i>
+            </div>
+            <h1 class="text-2xl font-bold tracking-tight">銀齡守護者 GSA</h1>
+            <p class="text-xs text-slate-400 mt-1">Person-Centered Independence Portal</p>
+        </div>
+
+        <!-- Login Form -->
+        <form action="dashboard.html" method="GET" class="space-y-5 relative z-10">
+            
+            <!-- Unit Selector -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Select Organization Unit</label>
+                <select required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-slate-200">
+                    <option value="" disabled selected>Choose your unit...</option>
+                    <option value="unit_a">Shatin Elderly Home (沙田護老院)</option>
+                    <option value="unit_b">Tuen Mun Care Center (屯門護理中心)</option>
+                    <option value="unit_c">Central Day Care Unit (中環日照中心)</option>
+                </select>
+            </div>
+
+            <!-- Role Selector -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Access Role</label>
+                <div class="grid grid-cols-2 gap-2">
+                    <label class="cursor-pointer">
+                        <input type="radio" name="role" value="director" class="peer hidden" checked>
+                        <div class="border border-slate-700 rounded-xl p-3 text-center peer-checked:border-indigo-500 peer-checked:bg-indigo-500/10 hover:bg-slate-700/50 transition">
+                            <i class="fa-solid fa-user-tie block mb-1 text-indigo-400"></i>
+                            <span class="text-xs font-medium">Director (院長級)</span>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="role" value="sub_director" class="peer hidden">
+                        <div class="border border-slate-700 rounded-xl p-3 text-center peer-checked:border-indigo-500 peer-checked:bg-indigo-500/10 hover:bg-slate-700/50 transition">
+                            <i class="fa-solid fa-user-gear block mb-1 text-emerald-400"></i>
+                            <span class="text-xs font-medium">Sub-Director (副院長)</span>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="role" value="supervisor" class="peer hidden">
+                        <div class="border border-slate-700 rounded-xl p-3 text-center peer-checked:border-indigo-500 peer-checked:bg-indigo-500/10 hover:bg-slate-700/50 transition">
+                            <i class="fa-solid fa-clipboard-user block mb-1 text-amber-400"></i>
+                            <span class="text-xs font-medium">Supervisor (主管)</span>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="role" value="frontline" class="peer hidden">
+                        <div class="border border-slate-700 rounded-xl p-3 text-center peer-checked:border-indigo-500 peer-checked:bg-indigo-500/10 hover:bg-slate-700/50 transition">
+                            <i class="fa-solid fa-hands-holding-child block mb-1 text-rose-400"></i>
+                            <span class="text-xs font-medium">Frontline Staff (前線)</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Passcode Input -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Access Key / PIN</label>
+                <input type="password" required value="123456" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-slate-200" placeholder="••••••••">
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="w-full bg-gradient-to-r from-indigo-500 to-emerald-500 hover:from-indigo-600 hover:to-emerald-600 text-white font-semibold py-3 px-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-sm flex items-center justify-center gap-2">
+                <span>Enter Quest Portal</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+        </form>
+
+        <!-- Footer Notice -->
+        <p class="text-center text-slate-500 text-xs mt-6">
+            銀齡守護者是起步點，透過文化系統建設，持續改進，抵達人本自立
+        </p>
+    </div>
+
+</body>
+</html>
