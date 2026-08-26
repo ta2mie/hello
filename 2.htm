@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Participants</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI, sans-serif;
+    background:#f6f8fb;
+    color:#333;
+}
+
+.header{
+    background:white;
+    padding:20px 40px;
+    border-bottom:1px solid #ddd;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:30px;
+}
+
+.page-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+.summary{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.stat{
+    text-align:center;
+}
+
+.stat-number{
+    font-size:28px;
+    font-weight:bold;
+    color:#2563eb;
+}
+
+.section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.staff{
+    display:flex;
+    justify-content:space-between;
+    padding:12px;
+    border:1px solid #eee;
+    border-radius:8px;
+    margin-bottom:10px;
+}
+
+.staff-left{
+    display:flex;
+    flex-direction:column;
+}
+
+.role{
+    color:#666;
+    font-size:14px;
+}
+
+.badge{
+    background:#dcfce7;
+    color:#166534;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+.warning{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.btn{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.btn-secondary{
+    background:white;
+    color:#2563eb;
+    border:1px solid #2563eb;
+}
+
+.progress{
+    height:12px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    width:85%;
+    height:100%;
+    background:#22c55e;
+}
+
+.quick-add{
+    display:grid;
+    grid-template-columns:2fr 2fr 2fr 1fr;
+    gap:10px;
+    margin-top:15px;
+}
+
+input, select{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h2>ABC Care Home</h2>
+    <p>Painpoint Analysis Participants</p>
+</div>
+
+<div class="container">
+
+<div class="page-title">
+    <div>
+        <h1>Participants</h1>
+        <p>Confirm who will participate in the current phase.</p>
+    </div>
+
+    <button class="btn">
+        Save Changes
+    </button>
+
+</div>
+
+<div class="card">
+
+<h3>Painpoint Analysis Progress</h3>
+
+<br>
+
+<div class="progress">
+    <div class="progress-fill"></div>
+</div>
+
+<br>
+
+<div class="summary">
+
+<div class="stat">
+    <div class="stat-number">17</div>
+    <p>Registered</p>
+</div>
+
+<div class="stat">
+    <div class="stat-number">20</div>
+    <p>Required</p>
+</div>
+
+<div class="stat">
+    <div class="stat-number">3</div>
+    <p>Missing</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="section-header">
+
+<h2>Management Team</h2>
+
+<span class="badge">
+Complete
+</span>
+
+</div>
+
+<div class="staff">
+    <div class="staff-left">
+        <strong>Jane Chan</strong>
+        <span class="role">Director</span>
+    </div>
+    <span>✅ Included</span>
+</div>
+
+<div class="staff">
+    <div class="staff-left">
+        <strong>Peter Wong</strong>
+        <span class="role">Deputy Director</span>
+    </div>
+    <span>✅ Included</span>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="section-header">
+
+<h2>Managers</h2>
+
+<span class="badge warning">
+4 of 5 selected
+</span>
+
+</div>
+
+<div class="staff">
+    <div class="staff-left">
+        <strong>Sally Lee</strong>
+        <span class="role">Nursing Manager</span>
+    </div>
+    <span>✅ Included</span>
+</div>
+
+<div class="staff">
+    <div class="staff-left">
+        <strong>Alan Ng</strong>
+        <span class="role">Operations Manager</span>
+    </div>
+    <span>✅ Included</span>
+</div>
+
+<button class="btn-secondary btn">
++ Add Manager
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="section-header">
+
+<h2>Frontline Staff</h2>
+
+<span class="badge warning">
+11 of 15 selected
+</span>
+
+</div>
+
+<div class="staff">
+    <div class="staff-left">
+        <strong>Mary Cheung</strong>
+        <span class="role">HCW</span>
+    </div>
+    <span>✅ Included</span>
+</div>
+
+<div class="staff">
+    <div class="staff-left">
+        <strong>Tommy Lau</strong>
+        <span class="role">EN</span>
+    </div>
+    <span>✅ Included</span>
+</div>
+
+<div class="staff">
+    <div class="staff-left">
+        <strong>Emily Wong</strong>
+        <span class="role">RN</span>
+    </div>
+    <span>✅ Included</span>
+</div>
+
+<button class="btn-secondary btn">
++ Add Frontline Staff
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>Quick Add Participant</h2>
+
+<div class="quick-add">
+
+<input type="text" placeholder="Name">
+
+<select>
+<option>Role</option>
+<option>Director</option>
+<option>Deputy Director</option>
+<option>Manager</option>
+<option>RN</option>
+<option>EN</option>
+<option>HCW</option>
+</select>
+
+<input type="email" placeholder="Email">
+
+<button class="btn">
+Add
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Related Tasks</h2>
+
+<ul style="padding-left:20px; line-height:2;">
+<li>✅ Director confirmed</li>
+<li>✅ Deputy Director confirmed</li>
+<li>⚠ Add 1 more manager</li>
+<li>⚠ Add 3 more frontline staff</li>
+<li>⚠ Confirm interview schedule after participant list is complete</li>
+</ul>
+
+</div>
+
+</div>
+
+</body>
+</html>
