@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>銀齡守護者計劃 GSA</title>
+
+<style>
+
+:root{
+--green:#1c6b56;
+--green-light:#eaf6f1;
+--gold:#d9a441;
+--dark:#222;
+--gray:#666;
+--white:#fff;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:
+"Microsoft JhengHei",
+"PingFang TC",
+sans-serif;
+line-height:1.8;
+color:var(--dark);
+}
+
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
+
+header{
+background:#fff;
+position:sticky;
+top:0;
+z-index:999;
+box-shadow:0 2px 12px rgba(0,0,0,.08);
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 0;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+color:var(--green);
+}
+
+.menu{
+display:flex;
+gap:24px;
+}
+
+.menu a{
+text-decoration:none;
+color:#444;
+font-weight:500;
+}
+
+.hero{
+background:
+linear-gradient(
+rgba(28,107,86,.80),
+rgba(28,107,86,.80)),
+url('https://images.unsplash.com/photo-1516307365426-bea591f05011?auto=format&fit=crop&w=1800&q=80');
+background-size:cover;
+background-position:center;
+padding:120px 20px;
+color:white;
+text-align:center;
+}
+
+.hero h1{
+font-size:56px;
+margin-bottom:15px;
+}
+
+.hero h2{
+font-weight:400;
+margin-bottom:25px;
+}
+
+.hero p{
+max-width:900px;
+margin:auto;
+font-size:20px;
+}
+
+.btns{
+margin-top:40px;
+}
+
+.btn{
+display:inline-block;
+padding:14px 28px;
+margin:8px;
+text-decoration:none;
+border-radius:50px;
+font-weight:bold;
+}
+
+.btn-primary{
+background:var(--gold);
+color:white;
+}
+
+.btn-secondary{
+border:2px solid white;
+color:white;
+}
+
+section{
+padding:90px 0;
+}
+
+.section-title{
+font-size:40px;
+color:var(--green);
+margin-bottom:20px;
+text-align:center;
+}
+
+.section-intro{
+text-align:center;
+max-width:850px;
+margin:auto;
+color:var(--gray);
+margin-bottom:50px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.card h3{
+margin-bottom:10px;
+color:var(--green);
+}
+
+.light{
+background:var(--green-light);
+}
+
+.framework{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:20px;
+}
+
+.phase{
+background:var(--green);
+padding:25px;
+color:white;
+text-align:center;
+border-radius:16px;
+}
+
+.phase h3{
+margin-bottom:10px;
+}
+
+.timeline{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.timeline div{
+background:white;
+padding:25px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.case-study{
+display:grid;
+grid-template-columns:1.2fr 1fr;
+gap:50px;
+align-items:center;
+}
+
+.quote{
+background:var(--green-light);
+padding:40px;
+border-left:8px solid var(--gold);
+border-radius:16px;
+font-size:22px;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+}
+
+.stat{
+background:white;
+padding:30px;
+text-align:center;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.stat h2{
+color:var(--green);
+font-size:42px;
+}
+
+.cta{
+background:var(--green);
+color:white;
+text-align:center;
+}
+
+.cta h2{
+font-size:38px;
+margin-bottom:20px;
+}
+
+footer{
+background:#103b31;
+color:white;
+text-align:center;
+padding:35px;
+}
+
+@media(max-width:900px){
+
+.framework{
+grid-template-columns:1fr;
+}
+
+.timeline{
+grid-template-columns:1fr;
+}
+
+.case-study{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:38px;
+}
+
+.menu{
+display:none;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="container">
+
+<nav>
+
+<div class="logo">
+銀齡守護者計劃 GSA
+</div>
+
+<div class="menu">
+<a href="#">關於我們</a>
+<a href="#">文化框架</a>
+<a href="#">服務</a>
+<a href="#">實踐案例</a>
+<a href="#">資源中心</a>
+<a href="#">聯絡我們</a>
+</div>
+
+</nav>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<h1>把同理心文化，由理念變成日常</h1>
+
+<h2>從領導到前線 · 從培訓到實踐</h2>
+
+<p>
+銀齡守護者計劃（GSA）致力協助安老服務機構建立以人為本及同理心文化，
+透過領導力發展、團隊參與、文化工具及實踐支援，
+讓文化真正融入管理、服務及工作日常。
+</p>
+
+<div class="btns">
+<a class="btn btn-primary" href="#">
+了解我們的模式
+</a>
+
+<a class="btn btn-secondary" href="#">
+瀏覽實踐案例
+</a>
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+我們看見的挑戰
+</h2>
+
+<p class="section-intro">
+很多機構明白同理心的重要性，
+很多主管亦曾接受領導及文化管理培訓。
+真正的挑戰是如何把理念落實於團隊及日常服務之中。
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>管理層共識</h3>
+建立共同方向及文化願景
+</div>
+
+<div class="card">
+<h3>團隊參與</h3>
+讓文化成為每位員工的責任
+</div>
+
+<div class="card">
+<h3>行為落地</h3>
+將理念轉化為可觀察實踐
+</div>
+
+<div class="card">
+<h3>持續發展</h3>
+讓改變超越一次性活動
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="light">
+
+<div class="container">
+
+<h2 class="section-title">
+GSA文化實踐框架
+</h2>
+
+<div class="framework">
+
+<div class="phase">
+<h3>認知建立</h3>
+建立共同理解
+</div>
+
+<div class="phase">
+<h3>領導對齊</h3>
+凝聚共識
+</div>
+
+<div class="phase">
+<h3>團隊啟動</h3>
+促進參與
+</div>
+
+<div class="phase">
+<h3>行為落地</h3>
+轉化實踐
+</div>
+
+<div class="phase">
+<h3>持續發展</h3>
+建立內部能力
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+GSA的獨特價值
+</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>由理念到實踐</h3>
+了解同理心只是第一步，
+我們協助機構把理念轉化成日常行為。
+</div>
+
+<div class="card">
+<h3>由上而下 × 由下而上</h3>
+同時連結高層主管、
+中層及前線團隊。
+</div>
+
+<div class="card">
+<h3>關注行為改變</h3>
+重視可觀察文化行為，
+而不只是課堂反應。
+</div>
+
+<div class="card">
+<h3>實踐工具支援</h3>
+提供框架、觀察工具、
+教練指引及持續發展方案。
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="light">
+
+<div class="container">
+
+<h2 class="section-title">
+文化改變歷程
+</h2>
+
+<div class="timeline">
+
+<div>
+<h3>開始之前</h3>
+<p>明白文化重要，但不知道如何開始。</p>
+</div>
+
+<div>
+<h3>推行期間</h3>
+<p>工作坊、文化大使、行動學習及反思循環。</p>
+</div>
+
+<div>
+<h3>文化落地後</h3>
+<p>建立共同語言、提升參與及改善服務體驗。</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<div class="case-study">
+
+<div>
+
+<h2 class="section-title" style="text-align:left;">
+案例分享：恩頤居
+</h2>
+
+<p>
+管理團隊一直認同以人為本照顧理念，
+亦曾參與相關領導發展課程，
+理解文化建設的重要性。
+</p>
+
+<br>
+
+<p>
+然而，最大的挑戰並非理解理論，
+而是如何推動團隊實踐，
+並將理念融入日常運作。
+</p>
+
+<br>
+
+<p>
+GSA透過文化框架、
+管理工具、
+文化大使培育、
+反思及實踐循環，
+協助團隊把理念轉化成日常行為。
+</p>
+
+</div>
+
+<div class="quote">
+
+「我明白文化轉變的理念，
+但不知道如何開始。
+
+與GSA合作後，
+我們學懂如何一步一步把文化落實於日常工作之中。」
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="light">
+
+<div class="container">
+
+<h2 class="section-title">
+文化實踐工具箱
+</h2>
+
+<div class="grid">
+
+<div class="card">同理心文化診斷</div>
+
+<div class="card">領導力對齊工具</div>
+
+<div class="card">文化大使培育框架</div>
+
+<div class="card">同理心行為框架</div>
+
+<div class="card">觀察及回饋工具</div>
+
+<div class="card">實踐證據記錄工具</div>
+
+<div class="card">準備度評估工具</div>
+
+<div class="card">持續發展計劃</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+影響力數據
+</h2>
+
+<div class="stats">
+
+<div class="stat">
+<h2>15+</h2>
+合作機構
+</div>
+
+<div class="stat">
+<h2>500+</h2>
+主管及員工
+</div>
+
+<div class="stat">
+<h2>80+</h2>
+文化大使
+</div>
+
+<div class="stat">
+<h2>1000+</h2>
+培訓及工作坊時數
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="cta">
+
+<div class="container">
+
+<h2>
+從文化願景到服務實踐
+</h2>
+
+<p>
+我們相信真正的文化改變，
+不只是讓更多人認識理念，
+而是讓更多人在工作中實踐理念。
+</p>
+
+<br>
+
+<a class="btn btn-primary" href="#">
+聯絡我們
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+銀齡守護者計劃 Generation Silver Age (GSA)<br>
+Empathy • Leadership • Culture Transformation
+
+</footer>
+
+</body>
+</html>
